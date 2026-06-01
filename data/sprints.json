@@ -1,0 +1,62 @@
+[
+  {
+    "id": "P1-S1",
+    "project": "P1",
+    "capacity": 82
+  },
+  {
+    "id": "P1-S2",
+    "project": "P1",
+    "capacity": 29
+  },
+  {
+    "id": "P1-S3",
+    "project": "P1",
+    "capacity": 35
+  },
+  {
+    "id": "P1-S4",
+    "project": "P1",
+    "capacity": 25
+  },
+  {
+    "id": "P2-S1",
+    "project": "P2",
+    "capacity": 88
+  },
+  {
+    "id": "P2-S2",
+    "project": "P2",
+    "capacity": 34
+  },
+  {
+    "id": "P2-S3",
+    "project": "P2",
+    "capacity": 11
+  },
+  {
+    "id": "P2-S4",
+    "project": "P2",
+    "capacity": 2
+  },
+  {
+    "id": "P3-S1",
+    "project": "P3",
+    "capacity": 86
+  },
+  {
+    "id": "P3-S2",
+    "project": "P3",
+    "capacity": 52
+  },
+  {
+    "id": "P3-S3",
+    "project": "P3",
+    "capacity": 14
+  },
+  {
+    "id": "P3-S4",
+    "project": "P3",
+    "capacity": 10
+  }
+]
