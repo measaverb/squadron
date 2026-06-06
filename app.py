@@ -25,7 +25,10 @@ import streamlit as st
 
 import scheduler as S          # Module 1 (표준 라이브러리만)
 import allocator as A          # Module 2 (표준 라이브러리만)
+<<<<<<< HEAD
 import planner as P            # Module 3 (표준 라이브러리만)
+=======
+>>>>>>> 0e670f4d13acf5e78fc45abda606f1c1b0f221b6
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(HERE, "data")
@@ -78,11 +81,18 @@ st.sidebar.metric("프로젝트", len(projects))
 
 st.title("Squadron — 프로젝트 스케줄러 · 특성기반 배정기")
 
+<<<<<<< HEAD
 tab1, tab2, tab_alloc, tab_planner, tab3 = st.tabs([
     "📅 Module 1 · 스케줄/임계경로",
     "🔁 Module 1 · 사이클 검출",
     "🗺️ Module 1→2 · 전체 일정 배정",
     "📦 Module 3 · 스프린트 플래너",
+=======
+tab1, tab2, tab_alloc, tab3 = st.tabs([
+    "📅 Module 1 · 스케줄/임계경로",
+    "🔁 Module 1 · 사이클 검출",
+    "🗺️ Module 1→2 · 전체 일정 배정",
+>>>>>>> 0e670f4d13acf5e78fc45abda606f1c1b0f221b6
     "👥 Module 2 · 배정 (헝가리안 vs 그리디)",
 ])
 
@@ -539,6 +549,7 @@ with tab3:
             st.subheader("친화도 히트맵 (헝가리안 배정 강조)")
             affinity_heatmap(s_tasks, pool, h)
 
+<<<<<<< HEAD
 # ════════════════════════════════════════════════════════════════════
 #  TAB 4 — 스프린트 플래너 (0/1 배낭 DP · 백트래킹 · 그리디)
 # ════════════════════════════════════════════════════════════════════
@@ -748,3 +759,7 @@ with tab_planner:
 
 st.sidebar.markdown("---")
 st.sidebar.caption("Module 1: 위상정렬 · Module 2: 헝가리안 · Module 3: 배낭DP")
+=======
+st.sidebar.markdown("---")
+st.sidebar.caption("Module 1: 위상정렬+임계경로 · Module 2: 헝가리안+그리디")
+>>>>>>> 0e670f4d13acf5e78fc45abda606f1c1b0f221b6
