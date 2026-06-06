@@ -1,0 +1,1016 @@
+[
+  {
+    "id": "D001",
+    "name": "Sofia Choi",
+    "level": 2,
+    "skills": [
+      "airflow",
+      "go",
+      "pandas",
+      "typescript"
+    ],
+    "capacity": 38,
+    "current_load": 22,
+    "familiar_projects": [
+      "P1",
+      "P2"
+    ]
+  },
+  {
+    "id": "D002",
+    "name": "Min Reyes",
+    "level": 2,
+    "skills": [
+      "java",
+      "mongodb",
+      "nextjs",
+      "postgresql",
+      "react",
+      "typescript"
+    ],
+    "capacity": 38,
+    "current_load": 12,
+    "familiar_projects": [
+      "P1",
+      "P3"
+    ]
+  },
+  {
+    "id": "D003",
+    "name": "Alex Yoon",
+    "level": 3,
+    "skills": [
+      "docker",
+      "go",
+      "html_css",
+      "nextjs",
+      "ruby"
+    ],
+    "capacity": 40,
+    "current_load": 12,
+    "familiar_projects": [
+      "P2",
+      "P3"
+    ]
+  },
+  {
+    "id": "D004",
+    "name": "Hana Jung",
+    "level": 5,
+    "skills": [
+      "go",
+      "java",
+      "nodejs",
+      "python",
+      "ruby",
+      "sql",
+      "typescript"
+    ],
+    "capacity": 48,
+    "current_load": 28,
+    "familiar_projects": [
+      "P1",
+      "P3"
+    ]
+  },
+  {
+    "id": "D005",
+    "name": "Tariq Choi",
+    "level": 3,
+    "skills": [
+      "cicd",
+      "go",
+      "html_css",
+      "react",
+      "sql"
+    ],
+    "capacity": 43,
+    "current_load": 16,
+    "familiar_projects": [
+      "P3"
+    ]
+  },
+  {
+    "id": "D006",
+    "name": "Ivan Reyes",
+    "level": 2,
+    "skills": [
+      "cicd",
+      "docker",
+      "postgresql",
+      "python"
+    ],
+    "capacity": 34,
+    "current_load": 7,
+    "familiar_projects": [
+      "P1"
+    ]
+  },
+  {
+    "id": "D007",
+    "name": "Ravi Khan",
+    "level": 3,
+    "skills": [
+      "aws",
+      "csharp",
+      "nextjs",
+      "react",
+      "sql"
+    ],
+    "capacity": 43,
+    "current_load": 19,
+    "familiar_projects": [
+      "P1",
+      "P3"
+    ]
+  },
+  {
+    "id": "D008",
+    "name": "Soo Silva",
+    "level": 3,
+    "skills": [
+      "docker",
+      "go",
+      "pandas",
+      "python",
+      "react",
+      "sql"
+    ],
+    "capacity": 38,
+    "current_load": 18,
+    "familiar_projects": [
+      "P1"
+    ]
+  },
+  {
+    "id": "D009",
+    "name": "Omar Lee",
+    "level": 1,
+    "skills": [
+      "cicd",
+      "docker",
+      "java",
+      "python",
+      "typescript"
+    ],
+    "capacity": 36,
+    "current_load": 15,
+    "familiar_projects": [
+      "P3"
+    ]
+  },
+  {
+    "id": "D010",
+    "name": "Min Park",
+    "level": 1,
+    "skills": [
+      "aws",
+      "cicd",
+      "csharp",
+      "typescript",
+      "vue"
+    ],
+    "capacity": 34,
+    "current_load": 11,
+    "familiar_projects": [
+      "P2",
+      "P3"
+    ]
+  },
+  {
+    "id": "D011",
+    "name": "Seo Yoon",
+    "level": 4,
+    "skills": [
+      "go",
+      "pandas",
+      "python",
+      "spark",
+      "sql",
+      "typescript",
+      "vue"
+    ],
+    "capacity": 41,
+    "current_load": 13,
+    "familiar_projects": [
+      "P2"
+    ]
+  },
+  {
+    "id": "D012",
+    "name": "Noah Novak",
+    "level": 3,
+    "skills": [
+      "docker",
+      "javascript",
+      "mongodb",
+      "nextjs",
+      "nodejs"
+    ],
+    "capacity": 37,
+    "current_load": 2,
+    "familiar_projects": [
+      "P1"
+    ]
+  },
+  {
+    "id": "D013",
+    "name": "Min Khan",
+    "level": 2,
+    "skills": [
+      "aws",
+      "docker",
+      "html_css",
+      "javascript",
+      "sql"
+    ],
+    "capacity": 40,
+    "current_load": 14,
+    "familiar_projects": [
+      "P2",
+      "P3"
+    ]
+  },
+  {
+    "id": "D014",
+    "name": "Seo Haddad",
+    "level": 2,
+    "skills": [
+      "javascript",
+      "kotlin",
+      "pandas",
+      "postgresql",
+      "sql"
+    ],
+    "capacity": 38,
+    "current_load": 15,
+    "familiar_projects": [
+      "P1"
+    ]
+  },
+  {
+    "id": "D015",
+    "name": "Sofia Haddad",
+    "level": 5,
+    "skills": [
+      "aws",
+      "flutter",
+      "kubernetes",
+      "mongodb",
+      "postgresql",
+      "react",
+      "sql",
+      "typescript"
+    ],
+    "capacity": 43,
+    "current_load": 19,
+    "familiar_projects": [
+      "P2"
+    ]
+  },
+  {
+    "id": "D016",
+    "name": "Emma Muller",
+    "level": 3,
+    "skills": [
+      "aws",
+      "docker",
+      "html_css",
+      "java",
+      "nextjs",
+      "python",
+      "rust",
+      "typescript"
+    ],
+    "capacity": 40,
+    "current_load": 10,
+    "familiar_projects": [
+      "P1"
+    ]
+  },
+  {
+    "id": "D017",
+    "name": "Hana Rossi",
+    "level": 3,
+    "skills": [
+      "aws",
+      "docker",
+      "java",
+      "kubernetes",
+      "nodejs",
+      "python",
+      "typescript"
+    ],
+    "capacity": 38,
+    "current_load": 14,
+    "familiar_projects": [
+      "P1",
+      "P3"
+    ]
+  },
+  {
+    "id": "D018",
+    "name": "Yuki Smith",
+    "level": 3,
+    "skills": [
+      "airflow",
+      "aws",
+      "cicd",
+      "kubernetes",
+      "python",
+      "react",
+      "terraform",
+      "vue"
+    ],
+    "capacity": 39,
+    "current_load": 19,
+    "familiar_projects": [
+      "P3"
+    ]
+  },
+  {
+    "id": "D019",
+    "name": "Diego Petrov",
+    "level": 2,
+    "skills": [
+      "cicd",
+      "docker",
+      "javascript",
+      "kubernetes",
+      "mongodb",
+      "python"
+    ],
+    "capacity": 34,
+    "current_load": 0,
+    "familiar_projects": [
+      "P1",
+      "P2"
+    ]
+  },
+  {
+    "id": "D020",
+    "name": "Min Singh",
+    "level": 2,
+    "skills": [
+      "docker",
+      "pandas",
+      "sql",
+      "swift",
+      "typescript"
+    ],
+    "capacity": 35,
+    "current_load": 17,
+    "familiar_projects": [
+      "P2"
+    ]
+  },
+  {
+    "id": "D021",
+    "name": "Diego Kang",
+    "level": 3,
+    "skills": [
+      "aws",
+      "docker",
+      "mongodb",
+      "typescript",
+      "vue"
+    ],
+    "capacity": 39,
+    "current_load": 6,
+    "familiar_projects": [
+      "P3"
+    ]
+  },
+  {
+    "id": "D022",
+    "name": "Priya Muller",
+    "level": 1,
+    "skills": [
+      "aws",
+      "kotlin",
+      "react",
+      "sql",
+      "typescript"
+    ],
+    "capacity": 37,
+    "current_load": 5,
+    "familiar_projects": [
+      "P1",
+      "P3"
+    ]
+  },
+  {
+    "id": "D023",
+    "name": "Wei Smith",
+    "level": 3,
+    "skills": [
+      "docker",
+      "javascript",
+      "mongodb",
+      "postgresql",
+      "react",
+      "sql"
+    ],
+    "capacity": 43,
+    "current_load": 1,
+    "familiar_projects": [
+      "P1",
+      "P3"
+    ]
+  },
+  {
+    "id": "D024",
+    "name": "Jun Cho",
+    "level": 4,
+    "skills": [
+      "cicd",
+      "java",
+      "javascript",
+      "kubernetes",
+      "nextjs",
+      "python",
+      "ruby"
+    ],
+    "capacity": 46,
+    "current_load": 8,
+    "familiar_projects": [
+      "P2",
+      "P3"
+    ]
+  },
+  {
+    "id": "D025",
+    "name": "Lena Wang",
+    "level": 3,
+    "skills": [
+      "cicd",
+      "kotlin",
+      "kubernetes",
+      "nextjs",
+      "python",
+      "react",
+      "spark",
+      "typescript"
+    ],
+    "capacity": 40,
+    "current_load": 11,
+    "familiar_projects": [
+      "P1",
+      "P2"
+    ]
+  },
+  {
+    "id": "D026",
+    "name": "Hyun Park",
+    "level": 2,
+    "skills": [
+      "airflow",
+      "javascript",
+      "kubernetes",
+      "pandas",
+      "python",
+      "sql"
+    ],
+    "capacity": 39,
+    "current_load": 23,
+    "familiar_projects": [
+      "P2"
+    ]
+  },
+  {
+    "id": "D027",
+    "name": "Aditi Choi",
+    "level": 2,
+    "skills": [
+      "aws",
+      "docker",
+      "go",
+      "kubernetes",
+      "postgresql",
+      "react"
+    ],
+    "capacity": 36,
+    "current_load": 12,
+    "familiar_projects": [
+      "P1",
+      "P3"
+    ]
+  },
+  {
+    "id": "D028",
+    "name": "Chen Petrov",
+    "level": 2,
+    "skills": [
+      "aws",
+      "go",
+      "javascript",
+      "nextjs",
+      "python",
+      "react"
+    ],
+    "capacity": 36,
+    "current_load": 6,
+    "familiar_projects": [
+      "P2",
+      "P3"
+    ]
+  },
+  {
+    "id": "D029",
+    "name": "Chen Novak",
+    "level": 3,
+    "skills": [
+      "airflow",
+      "html_css",
+      "kotlin",
+      "pandas",
+      "postgresql",
+      "sql"
+    ],
+    "capacity": 42,
+    "current_load": 20,
+    "familiar_projects": [
+      "P1",
+      "P3"
+    ]
+  },
+  {
+    "id": "D030",
+    "name": "Alex Costa",
+    "level": 3,
+    "skills": [
+      "javascript",
+      "kotlin",
+      "pandas",
+      "postgresql",
+      "spark",
+      "vue"
+    ],
+    "capacity": 40,
+    "current_load": 13,
+    "familiar_projects": [
+      "P3"
+    ]
+  },
+  {
+    "id": "D031",
+    "name": "Ji Reyes",
+    "level": 3,
+    "skills": [
+      "csharp",
+      "javascript",
+      "mongodb",
+      "pandas",
+      "react",
+      "typescript"
+    ],
+    "capacity": 40,
+    "current_load": 7,
+    "familiar_projects": [
+      "P3"
+    ]
+  },
+  {
+    "id": "D032",
+    "name": "Maria Khan",
+    "level": 3,
+    "skills": [
+      "cicd",
+      "go",
+      "kubernetes",
+      "nextjs",
+      "pandas"
+    ],
+    "capacity": 41,
+    "current_load": 19,
+    "familiar_projects": [
+      "P2",
+      "P3"
+    ]
+  },
+  {
+    "id": "D033",
+    "name": "Hyun Bauer",
+    "level": 4,
+    "skills": [
+      "aws",
+      "html_css",
+      "java",
+      "pandas",
+      "react",
+      "ruby",
+      "sql",
+      "typescript"
+    ],
+    "capacity": 45,
+    "current_load": 7,
+    "familiar_projects": [
+      "P1",
+      "P2"
+    ]
+  },
+  {
+    "id": "D034",
+    "name": "Aditi Park",
+    "level": 3,
+    "skills": [
+      "html_css",
+      "kubernetes",
+      "nodejs",
+      "sql",
+      "typescript"
+    ],
+    "capacity": 38,
+    "current_load": 22,
+    "familiar_projects": [
+      "P1"
+    ]
+  },
+  {
+    "id": "D035",
+    "name": "Emma Chen",
+    "level": 2,
+    "skills": [
+      "aws",
+      "csharp",
+      "javascript",
+      "kubernetes",
+      "nodejs",
+      "rust"
+    ],
+    "capacity": 39,
+    "current_load": 0,
+    "familiar_projects": [
+      "P1",
+      "P2"
+    ]
+  },
+  {
+    "id": "D036",
+    "name": "Mei Andersson",
+    "level": 5,
+    "skills": [
+      "airflow",
+      "flutter",
+      "html_css",
+      "java",
+      "kubernetes",
+      "nextjs",
+      "react",
+      "sql",
+      "typescript"
+    ],
+    "capacity": 46,
+    "current_load": 15,
+    "familiar_projects": [
+      "P2"
+    ]
+  },
+  {
+    "id": "D037",
+    "name": "Hiro Dubois",
+    "level": 2,
+    "skills": [
+      "airflow",
+      "cicd",
+      "docker",
+      "html_css",
+      "kotlin",
+      "ruby"
+    ],
+    "capacity": 38,
+    "current_load": 18,
+    "familiar_projects": [
+      "P1"
+    ]
+  },
+  {
+    "id": "D038",
+    "name": "Jin Patel",
+    "level": 3,
+    "skills": [
+      "html_css",
+      "java",
+      "nextjs",
+      "react",
+      "typescript"
+    ],
+    "capacity": 40,
+    "current_load": 8,
+    "familiar_projects": [
+      "P1",
+      "P2"
+    ]
+  },
+  {
+    "id": "D039",
+    "name": "Yuki Cho",
+    "level": 3,
+    "skills": [
+      "javascript",
+      "kotlin",
+      "nextjs",
+      "react",
+      "swift",
+      "typescript",
+      "vue"
+    ],
+    "capacity": 38,
+    "current_load": 6,
+    "familiar_projects": [
+      "P3"
+    ]
+  },
+  {
+    "id": "D040",
+    "name": "Priya Park",
+    "level": 2,
+    "skills": [
+      "nextjs",
+      "nodejs",
+      "sql",
+      "typescript"
+    ],
+    "capacity": 40,
+    "current_load": 11,
+    "familiar_projects": [
+      "P3"
+    ]
+  },
+  {
+    "id": "D041",
+    "name": "Ji Okafor",
+    "level": 3,
+    "skills": [
+      "cicd",
+      "csharp",
+      "go",
+      "html_css",
+      "kubernetes",
+      "postgresql",
+      "python",
+      "terraform"
+    ],
+    "capacity": 40,
+    "current_load": 12,
+    "familiar_projects": [
+      "P1"
+    ]
+  },
+  {
+    "id": "D042",
+    "name": "Hana Singh",
+    "level": 3,
+    "skills": [
+      "airflow",
+      "docker",
+      "pandas",
+      "react",
+      "sql",
+      "swift",
+      "typescript"
+    ],
+    "capacity": 39,
+    "current_load": 17,
+    "familiar_projects": [
+      "P2",
+      "P3"
+    ]
+  },
+  {
+    "id": "D043",
+    "name": "Sam Park",
+    "level": 1,
+    "skills": [
+      "go",
+      "javascript",
+      "pandas",
+      "postgresql",
+      "sql"
+    ],
+    "capacity": 37,
+    "current_load": 14,
+    "familiar_projects": [
+      "P2"
+    ]
+  },
+  {
+    "id": "D044",
+    "name": "Jin Yoon",
+    "level": 2,
+    "skills": [
+      "aws",
+      "cicd",
+      "docker",
+      "flutter",
+      "go",
+      "kubernetes",
+      "nodejs"
+    ],
+    "capacity": 36,
+    "current_load": 7,
+    "familiar_projects": [
+      "P2"
+    ]
+  },
+  {
+    "id": "D045",
+    "name": "Jin Choi",
+    "level": 4,
+    "skills": [
+      "go",
+      "java",
+      "nextjs",
+      "python",
+      "react",
+      "terraform",
+      "vue"
+    ],
+    "capacity": 42,
+    "current_load": 25,
+    "familiar_projects": [
+      "P2",
+      "P3"
+    ]
+  },
+  {
+    "id": "D046",
+    "name": "Aditi Smith",
+    "level": 4,
+    "skills": [
+      "airflow",
+      "docker",
+      "html_css",
+      "mongodb",
+      "nextjs",
+      "postgresql",
+      "python",
+      "sql"
+    ],
+    "capacity": 45,
+    "current_load": 15,
+    "familiar_projects": [
+      "P1",
+      "P3"
+    ]
+  },
+  {
+    "id": "D047",
+    "name": "Maria Andersson",
+    "level": 2,
+    "skills": [
+      "java",
+      "mongodb",
+      "nodejs",
+      "postgresql",
+      "rust",
+      "sql"
+    ],
+    "capacity": 39,
+    "current_load": 17,
+    "familiar_projects": [
+      "P2",
+      "P3"
+    ]
+  },
+  {
+    "id": "D048",
+    "name": "Mei Patel",
+    "level": 2,
+    "skills": [
+      "airflow",
+      "html_css",
+      "postgresql",
+      "python",
+      "react"
+    ],
+    "capacity": 35,
+    "current_load": 6,
+    "familiar_projects": [
+      "P3"
+    ]
+  },
+  {
+    "id": "D049",
+    "name": "Yuna Patel",
+    "level": 3,
+    "skills": [
+      "html_css",
+      "nextjs",
+      "python",
+      "ruby",
+      "swift",
+      "typescript",
+      "vue"
+    ],
+    "capacity": 37,
+    "current_load": 22,
+    "familiar_projects": [
+      "P2"
+    ]
+  },
+  {
+    "id": "D050",
+    "name": "Chen Cho",
+    "level": 1,
+    "skills": [
+      "mongodb",
+      "python",
+      "swift"
+    ],
+    "capacity": 37,
+    "current_load": 15,
+    "familiar_projects": [
+      "P1"
+    ]
+  },
+  {
+    "id": "D051",
+    "name": "Ivan Smith",
+    "level": 3,
+    "skills": [
+      "docker",
+      "html_css",
+      "javascript",
+      "kubernetes",
+      "nodejs",
+      "typescript"
+    ],
+    "capacity": 40,
+    "current_load": 15,
+    "familiar_projects": [
+      "P3"
+    ]
+  },
+  {
+    "id": "D052",
+    "name": "Priya Bauer",
+    "level": 3,
+    "skills": [
+      "html_css",
+      "nodejs",
+      "postgresql",
+      "react",
+      "swift"
+    ],
+    "capacity": 43,
+    "current_load": 13,
+    "familiar_projects": [
+      "P3"
+    ]
+  },
+  {
+    "id": "D053",
+    "name": "Ivan Andersson",
+    "level": 2,
+    "skills": [
+      "cicd",
+      "docker",
+      "java",
+      "postgresql",
+      "swift"
+    ],
+    "capacity": 39,
+    "current_load": 3,
+    "familiar_projects": [
+      "P3"
+    ]
+  },
+  {
+    "id": "D054",
+    "name": "Soo Novak",
+    "level": 2,
+    "skills": [
+      "go",
+      "html_css",
+      "javascript",
+      "python",
+      "sql",
+      "typescript"
+    ],
+    "capacity": 36,
+    "current_load": 1,
+    "familiar_projects": [
+      "P2"
+    ]
+  },
+  {
+    "id": "D055",
+    "name": "Sofia Kang",
+    "level": 3,
+    "skills": [
+      "airflow",
+      "csharp",
+      "docker",
+      "html_css",
+      "javascript",
+      "react",
+      "vue"
+    ],
+    "capacity": 37,
+    "current_load": 17,
+    "familiar_projects": [
+      "P3"
+    ]
+  }
+]

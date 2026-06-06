@@ -1,0 +1,3445 @@
+[
+  {
+    "id": "T0001",
+    "project": "P1",
+    "title": "[Critical] Add search API",
+    "description": "Add search API for the Apollo project.",
+    "tags": [
+      "backend",
+      "search"
+    ],
+    "required_skills": [
+      "python"
+    ],
+    "difficulty": 5,
+    "estimate": 13,
+    "value": 86,
+    "priority": 3,
+    "depends_on": [
+      "T0008"
+    ],
+    "sprint": "P1-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0002",
+    "project": "P1",
+    "title": "[Critical] Add messaging monitoring",
+    "description": "Add messaging monitoring for the Apollo project.",
+    "tags": [
+      "devops",
+      "messaging"
+    ],
+    "required_skills": [
+      "kubernetes"
+    ],
+    "difficulty": 5,
+    "estimate": 8,
+    "value": 44,
+    "priority": 3,
+    "depends_on": [
+      "T0001"
+    ],
+    "sprint": "P1-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0003",
+    "project": "P1",
+    "title": "[Critical] Create payment dashboard",
+    "description": "Create payment dashboard for the Apollo project.",
+    "tags": [
+      "data",
+      "payment"
+    ],
+    "required_skills": [
+      "mongodb",
+      "pandas",
+      "sql"
+    ],
+    "difficulty": 5,
+    "estimate": 13,
+    "value": 13,
+    "priority": 1,
+    "depends_on": [
+      "T0002"
+    ],
+    "sprint": "P1-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0004",
+    "project": "P1",
+    "title": "[Critical] Configure scheduler pipeline",
+    "description": "Configure scheduler pipeline for the Apollo project.",
+    "tags": [
+      "devops",
+      "scheduler"
+    ],
+    "required_skills": [
+      "cicd"
+    ],
+    "difficulty": 5,
+    "estimate": 8,
+    "value": 70,
+    "priority": 3,
+    "depends_on": [
+      "T0003"
+    ],
+    "sprint": "P1-S2",
+    "assignee": null
+  },
+  {
+    "id": "T0005",
+    "project": "P1",
+    "title": "[Critical] Add notification ETL job",
+    "description": "Add notification ETL job for the Apollo project.",
+    "tags": [
+      "data",
+      "notification"
+    ],
+    "required_skills": [
+      "airflow",
+      "pandas",
+      "sql"
+    ],
+    "difficulty": 5,
+    "estimate": 13,
+    "value": 52,
+    "priority": 2,
+    "depends_on": [
+      "T0004"
+    ],
+    "sprint": "P1-S2",
+    "assignee": null
+  },
+  {
+    "id": "T0006",
+    "project": "P1",
+    "title": "[Critical] Refactor report service",
+    "description": "Refactor report service for the Apollo project.",
+    "tags": [
+      "backend",
+      "report"
+    ],
+    "required_skills": [
+      "go",
+      "ruby"
+    ],
+    "difficulty": 5,
+    "estimate": 8,
+    "value": 80,
+    "priority": 1,
+    "depends_on": [
+      "T0005"
+    ],
+    "sprint": "P1-S3",
+    "assignee": null
+  },
+  {
+    "id": "T0007",
+    "project": "P1",
+    "title": "[Critical] Add onboarding API",
+    "description": "Add onboarding API for the Apollo project.",
+    "tags": [
+      "backend",
+      "onboarding"
+    ],
+    "required_skills": [
+      "go",
+      "python"
+    ],
+    "difficulty": 5,
+    "estimate": 13,
+    "value": 94,
+    "priority": 4,
+    "depends_on": [
+      "T0006"
+    ],
+    "sprint": "P1-S3",
+    "assignee": null
+  },
+  {
+    "id": "T0008",
+    "project": "P1",
+    "title": "[Critical] Create checkout dashboard",
+    "description": "Create checkout dashboard for the Apollo project.",
+    "tags": [
+      "checkout",
+      "data"
+    ],
+    "required_skills": [
+      "airflow"
+    ],
+    "difficulty": 5,
+    "estimate": 8,
+    "value": 90,
+    "priority": 2,
+    "depends_on": [
+      "T0007"
+    ],
+    "sprint": "P1-S4",
+    "assignee": null
+  },
+  {
+    "id": "T0009",
+    "project": "P1",
+    "title": "Refactor onboarding service",
+    "description": "Refactor onboarding service for the Apollo project.",
+    "tags": [
+      "backend",
+      "onboarding"
+    ],
+    "required_skills": [
+      "go",
+      "java",
+      "nodejs"
+    ],
+    "difficulty": 4,
+    "estimate": 8,
+    "value": 25,
+    "priority": 1,
+    "depends_on": [
+      "T0004"
+    ],
+    "sprint": "P1-S2",
+    "assignee": null
+  },
+  {
+    "id": "T0010",
+    "project": "P1",
+    "title": "Configure settings pipeline",
+    "description": "Configure settings pipeline for the Apollo project.",
+    "tags": [
+      "devops",
+      "settings"
+    ],
+    "required_skills": [
+      "aws",
+      "docker",
+      "kubernetes"
+    ],
+    "difficulty": 3,
+    "estimate": 3,
+    "value": 38,
+    "priority": 4,
+    "depends_on": [
+      "T0002"
+    ],
+    "sprint": "P1-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0011",
+    "project": "P1",
+    "title": "Optimise profile query path",
+    "description": "Optimise profile query path for the Apollo project.",
+    "tags": [
+      "backend",
+      "profile"
+    ],
+    "required_skills": [
+      "go",
+      "java",
+      "nodejs",
+      "spark"
+    ],
+    "difficulty": 3,
+    "estimate": 5,
+    "value": 63,
+    "priority": 4,
+    "depends_on": [
+      "T0007",
+      "T0003"
+    ],
+    "sprint": "P1-S4",
+    "assignee": null
+  },
+  {
+    "id": "T0012",
+    "project": "P1",
+    "title": "Model messaging schema",
+    "description": "Model messaging schema for the Apollo project.",
+    "tags": [
+      "data",
+      "messaging"
+    ],
+    "required_skills": [
+      "pandas",
+      "postgresql",
+      "sql"
+    ],
+    "difficulty": 5,
+    "estimate": 8,
+    "value": 18,
+    "priority": 2,
+    "depends_on": [],
+    "sprint": "P1-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0013",
+    "project": "P1",
+    "title": "Add export ETL job",
+    "description": "Add export ETL job for the Apollo project.",
+    "tags": [
+      "data",
+      "export"
+    ],
+    "required_skills": [
+      "mongodb",
+      "sql"
+    ],
+    "difficulty": 4,
+    "estimate": 8,
+    "value": 29,
+    "priority": 2,
+    "depends_on": [
+      "T0009"
+    ],
+    "sprint": "P1-S3",
+    "assignee": null
+  },
+  {
+    "id": "T0014",
+    "project": "P1",
+    "title": "Add report ETL job",
+    "description": "Add report ETL job for the Apollo project.",
+    "tags": [
+      "data",
+      "report"
+    ],
+    "required_skills": [
+      "airflow",
+      "pandas",
+      "postgresql"
+    ],
+    "difficulty": 5,
+    "estimate": 8,
+    "value": 99,
+    "priority": 2,
+    "depends_on": [
+      "T0011"
+    ],
+    "sprint": "P1-S4",
+    "assignee": null
+  },
+  {
+    "id": "T0015",
+    "project": "P1",
+    "title": "Model feed schema",
+    "description": "Model feed schema for the Apollo project.",
+    "tags": [
+      "data",
+      "feed"
+    ],
+    "required_skills": [
+      "mongodb"
+    ],
+    "difficulty": 4,
+    "estimate": 8,
+    "value": 59,
+    "priority": 4,
+    "depends_on": [],
+    "sprint": "P1-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0016",
+    "project": "P1",
+    "title": "Automate analytics deployment",
+    "description": "Automate analytics deployment for the Apollo project.",
+    "tags": [
+      "analytics",
+      "devops"
+    ],
+    "required_skills": [
+      "aws"
+    ],
+    "difficulty": 3,
+    "estimate": 5,
+    "value": 22,
+    "priority": 4,
+    "depends_on": [],
+    "sprint": "P1-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0017",
+    "project": "P1",
+    "title": "Build export pipeline",
+    "description": "Build export pipeline for the Apollo project.",
+    "tags": [
+      "data",
+      "export"
+    ],
+    "required_skills": [
+      "postgresql",
+      "sql"
+    ],
+    "difficulty": 3,
+    "estimate": 3,
+    "value": 19,
+    "priority": 3,
+    "depends_on": [],
+    "sprint": "P1-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0018",
+    "project": "P1",
+    "title": "Add wallet ETL job",
+    "description": "Add wallet ETL job for the Apollo project.",
+    "tags": [
+      "data",
+      "wallet"
+    ],
+    "required_skills": [
+      "pandas",
+      "postgresql",
+      "sql"
+    ],
+    "difficulty": 4,
+    "estimate": 8,
+    "value": 50,
+    "priority": 3,
+    "depends_on": [
+      "T0016",
+      "T0010"
+    ],
+    "sprint": "P1-S2",
+    "assignee": null
+  },
+  {
+    "id": "T0019",
+    "project": "P1",
+    "title": "Migrate checkout table",
+    "description": "Migrate checkout table for the Apollo project.",
+    "tags": [
+      "checkout",
+      "data"
+    ],
+    "required_skills": [
+      "mongodb",
+      "postgresql",
+      "sql"
+    ],
+    "difficulty": 3,
+    "estimate": 5,
+    "value": 39,
+    "priority": 3,
+    "depends_on": [],
+    "sprint": "P1-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0020",
+    "project": "P1",
+    "title": "Build catalogue pipeline",
+    "description": "Build catalogue pipeline for the Apollo project.",
+    "tags": [
+      "catalogue",
+      "data"
+    ],
+    "required_skills": [
+      "airflow",
+      "pandas",
+      "sql"
+    ],
+    "difficulty": 3,
+    "estimate": 3,
+    "value": 15,
+    "priority": 2,
+    "depends_on": [
+      "T0012",
+      "T0019"
+    ],
+    "sprint": "P1-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0021",
+    "project": "P1",
+    "title": "Add auth API",
+    "description": "Add auth API for the Apollo project.",
+    "tags": [
+      "auth",
+      "backend"
+    ],
+    "required_skills": [
+      "go",
+      "java"
+    ],
+    "difficulty": 2,
+    "estimate": 3,
+    "value": 82,
+    "priority": 3,
+    "depends_on": [
+      "T0016",
+      "T0020"
+    ],
+    "sprint": "P1-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0022",
+    "project": "P1",
+    "title": "Refactor notification service",
+    "description": "Refactor notification service for the Apollo project.",
+    "tags": [
+      "backend",
+      "notification"
+    ],
+    "required_skills": [
+      "csharp"
+    ],
+    "difficulty": 4,
+    "estimate": 5,
+    "value": 73,
+    "priority": 4,
+    "depends_on": [
+      "T0021"
+    ],
+    "sprint": "P1-S2",
+    "assignee": null
+  },
+  {
+    "id": "T0023",
+    "project": "P1",
+    "title": "Refactor messaging service",
+    "description": "Refactor messaging service for the Apollo project.",
+    "tags": [
+      "backend",
+      "messaging"
+    ],
+    "required_skills": [
+      "go",
+      "nodejs",
+      "ruby"
+    ],
+    "difficulty": 3,
+    "estimate": 5,
+    "value": 46,
+    "priority": 3,
+    "depends_on": [
+      "T0017"
+    ],
+    "sprint": "P1-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0024",
+    "project": "P1",
+    "title": "Implement messaging endpoint",
+    "description": "Implement messaging endpoint for the Apollo project.",
+    "tags": [
+      "backend",
+      "messaging"
+    ],
+    "required_skills": [
+      "csharp",
+      "nodejs"
+    ],
+    "difficulty": 3,
+    "estimate": 5,
+    "value": 98,
+    "priority": 2,
+    "depends_on": [
+      "T0020"
+    ],
+    "sprint": "P1-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0025",
+    "project": "P1",
+    "title": "Model cart schema",
+    "description": "Model cart schema for the Apollo project.",
+    "tags": [
+      "cart",
+      "data"
+    ],
+    "required_skills": [
+      "postgresql",
+      "sql"
+    ],
+    "difficulty": 2,
+    "estimate": 3,
+    "value": 83,
+    "priority": 2,
+    "depends_on": [
+      "T0022",
+      "T0023"
+    ],
+    "sprint": "P1-S2",
+    "assignee": null
+  },
+  {
+    "id": "T0026",
+    "project": "P1",
+    "title": "Add login monitoring",
+    "description": "Add login monitoring for the Apollo project.",
+    "tags": [
+      "devops",
+      "login"
+    ],
+    "required_skills": [
+      "aws",
+      "docker",
+      "kubernetes"
+    ],
+    "difficulty": 3,
+    "estimate": 3,
+    "value": 87,
+    "priority": 3,
+    "depends_on": [
+      "T0019",
+      "T0018"
+    ],
+    "sprint": "P1-S2",
+    "assignee": null
+  },
+  {
+    "id": "T0027",
+    "project": "P1",
+    "title": "Model wallet schema",
+    "description": "Model wallet schema for the Apollo project.",
+    "tags": [
+      "data",
+      "wallet"
+    ],
+    "required_skills": [
+      "airflow",
+      "postgresql"
+    ],
+    "difficulty": 3,
+    "estimate": 3,
+    "value": 90,
+    "priority": 1,
+    "depends_on": [],
+    "sprint": "P1-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0028",
+    "project": "P1",
+    "title": "Set up billing infrastructure",
+    "description": "Set up billing infrastructure for the Apollo project.",
+    "tags": [
+      "devops",
+      "up"
+    ],
+    "required_skills": [
+      "cicd",
+      "docker"
+    ],
+    "difficulty": 2,
+    "estimate": 2,
+    "value": 21,
+    "priority": 4,
+    "depends_on": [],
+    "sprint": "P1-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0029",
+    "project": "P1",
+    "title": "Create notification dashboard",
+    "description": "Create notification dashboard for the Apollo project.",
+    "tags": [
+      "data",
+      "notification"
+    ],
+    "required_skills": [
+      "postgresql"
+    ],
+    "difficulty": 4,
+    "estimate": 8,
+    "value": 77,
+    "priority": 3,
+    "depends_on": [
+      "T0021",
+      "T0026"
+    ],
+    "sprint": "P1-S3",
+    "assignee": null
+  },
+  {
+    "id": "T0030",
+    "project": "P1",
+    "title": "Model onboarding schema",
+    "description": "Model onboarding schema for the Apollo project.",
+    "tags": [
+      "data",
+      "onboarding"
+    ],
+    "required_skills": [
+      "airflow",
+      "mongodb"
+    ],
+    "difficulty": 4,
+    "estimate": 8,
+    "value": 19,
+    "priority": 1,
+    "depends_on": [],
+    "sprint": "P1-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0031",
+    "project": "P1",
+    "title": "Optimise import query path",
+    "description": "Optimise import query path for the Apollo project.",
+    "tags": [
+      "backend",
+      "import"
+    ],
+    "required_skills": [
+      "go",
+      "python"
+    ],
+    "difficulty": 1,
+    "estimate": 1,
+    "value": 68,
+    "priority": 2,
+    "depends_on": [
+      "T0030"
+    ],
+    "sprint": "P1-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0032",
+    "project": "P1",
+    "title": "Add scheduler monitoring",
+    "description": "Add scheduler monitoring for the Apollo project.",
+    "tags": [
+      "devops",
+      "scheduler"
+    ],
+    "required_skills": [
+      "cicd",
+      "docker",
+      "terraform"
+    ],
+    "difficulty": 3,
+    "estimate": 5,
+    "value": 13,
+    "priority": 3,
+    "depends_on": [
+      "T0030",
+      "T0027"
+    ],
+    "sprint": "P1-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0033",
+    "project": "P1",
+    "title": "Add wallet monitoring",
+    "description": "Add wallet monitoring for the Apollo project.",
+    "tags": [
+      "devops",
+      "wallet"
+    ],
+    "required_skills": [
+      "docker"
+    ],
+    "difficulty": 3,
+    "estimate": 5,
+    "value": 99,
+    "priority": 2,
+    "depends_on": [
+      "T0032",
+      "T0028"
+    ],
+    "sprint": "P1-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0034",
+    "project": "P1",
+    "title": "Build search pipeline",
+    "description": "Build search pipeline for the Apollo project.",
+    "tags": [
+      "data",
+      "search"
+    ],
+    "required_skills": [
+      "sql"
+    ],
+    "difficulty": 2,
+    "estimate": 3,
+    "value": 24,
+    "priority": 1,
+    "depends_on": [
+      "T0029"
+    ],
+    "sprint": "P1-S3",
+    "assignee": null
+  },
+  {
+    "id": "T0035",
+    "project": "P1",
+    "title": "Automate cart deployment",
+    "description": "Automate cart deployment for the Apollo project.",
+    "tags": [
+      "cart",
+      "devops"
+    ],
+    "required_skills": [
+      "cicd",
+      "kubernetes"
+    ],
+    "difficulty": 5,
+    "estimate": 13,
+    "value": 85,
+    "priority": 3,
+    "depends_on": [
+      "T0028",
+      "T0029"
+    ],
+    "sprint": "P1-S3",
+    "assignee": null
+  },
+  {
+    "id": "T0036",
+    "project": "P1",
+    "title": "Optimise catalogue query path",
+    "description": "Optimise catalogue query path for the Apollo project.",
+    "tags": [
+      "backend",
+      "catalogue"
+    ],
+    "required_skills": [
+      "go"
+    ],
+    "difficulty": 3,
+    "estimate": 5,
+    "value": 14,
+    "priority": 3,
+    "depends_on": [
+      "T0029"
+    ],
+    "sprint": "P1-S3",
+    "assignee": null
+  },
+  {
+    "id": "T0037",
+    "project": "P1",
+    "title": "Optimise messaging query path",
+    "description": "Optimise messaging query path for the Apollo project.",
+    "tags": [
+      "backend",
+      "messaging"
+    ],
+    "required_skills": [
+      "nodejs"
+    ],
+    "difficulty": 1,
+    "estimate": 2,
+    "value": 79,
+    "priority": 4,
+    "depends_on": [
+      "T0036"
+    ],
+    "sprint": "P1-S4",
+    "assignee": null
+  },
+  {
+    "id": "T0038",
+    "project": "P1",
+    "title": "Add checkout monitoring",
+    "description": "Add checkout monitoring for the Apollo project.",
+    "tags": [
+      "checkout",
+      "devops"
+    ],
+    "required_skills": [
+      "cicd",
+      "docker"
+    ],
+    "difficulty": 5,
+    "estimate": 13,
+    "value": 21,
+    "priority": 3,
+    "depends_on": [
+      "T0034",
+      "T0030"
+    ],
+    "sprint": "P1-S4",
+    "assignee": null
+  },
+  {
+    "id": "T0039",
+    "project": "P1",
+    "title": "Configure login pipeline",
+    "description": "Configure login pipeline for the Apollo project.",
+    "tags": [
+      "devops",
+      "login"
+    ],
+    "required_skills": [
+      "cicd"
+    ],
+    "difficulty": 2,
+    "estimate": 2,
+    "value": 82,
+    "priority": 2,
+    "depends_on": [],
+    "sprint": "P1-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0040",
+    "project": "P1",
+    "title": "Automate scheduler deployment",
+    "description": "Automate scheduler deployment for the Apollo project.",
+    "tags": [
+      "devops",
+      "scheduler"
+    ],
+    "required_skills": [
+      "aws"
+    ],
+    "difficulty": 2,
+    "estimate": 2,
+    "value": 86,
+    "priority": 1,
+    "depends_on": [
+      "T0032"
+    ],
+    "sprint": "P1-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0041",
+    "project": "P1",
+    "title": "Refactor import service",
+    "description": "Refactor import service for the Apollo project.",
+    "tags": [
+      "backend",
+      "import"
+    ],
+    "required_skills": [
+      "java",
+      "python"
+    ],
+    "difficulty": 3,
+    "estimate": 3,
+    "value": 26,
+    "priority": 1,
+    "depends_on": [],
+    "sprint": "P1-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0042",
+    "project": "P1",
+    "title": "Write report business logic",
+    "description": "Write report business logic for the Apollo project.",
+    "tags": [
+      "backend",
+      "report"
+    ],
+    "required_skills": [
+      "java"
+    ],
+    "difficulty": 2,
+    "estimate": 2,
+    "value": 63,
+    "priority": 3,
+    "depends_on": [],
+    "sprint": "P1-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0043",
+    "project": "P1",
+    "title": "Set up analytics infrastructure",
+    "description": "Set up analytics infrastructure for the Apollo project.",
+    "tags": [
+      "devops",
+      "up"
+    ],
+    "required_skills": [
+      "cicd",
+      "kubernetes"
+    ],
+    "difficulty": 3,
+    "estimate": 5,
+    "value": 74,
+    "priority": 2,
+    "depends_on": [
+      "T0038"
+    ],
+    "sprint": "P1-S4",
+    "assignee": null
+  },
+  {
+    "id": "T0044",
+    "project": "P1",
+    "title": "Set up audit infrastructure",
+    "description": "Set up audit infrastructure for the Apollo project.",
+    "tags": [
+      "devops",
+      "up"
+    ],
+    "required_skills": [
+      "aws",
+      "cicd",
+      "docker"
+    ],
+    "difficulty": 1,
+    "estimate": 2,
+    "value": 61,
+    "priority": 2,
+    "depends_on": [],
+    "sprint": "P1-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0045",
+    "project": "P1",
+    "title": "Optimise session query path",
+    "description": "Optimise session query path for the Apollo project.",
+    "tags": [
+      "backend",
+      "session"
+    ],
+    "required_skills": [
+      "python",
+      "ruby"
+    ],
+    "difficulty": 2,
+    "estimate": 2,
+    "value": 18,
+    "priority": 1,
+    "depends_on": [
+      "T0041"
+    ],
+    "sprint": "P1-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0046",
+    "project": "P1",
+    "title": "Configure import pipeline",
+    "description": "Configure import pipeline for the Apollo project.",
+    "tags": [
+      "devops",
+      "import"
+    ],
+    "required_skills": [
+      "aws",
+      "cicd",
+      "kubernetes"
+    ],
+    "difficulty": 3,
+    "estimate": 5,
+    "value": 22,
+    "priority": 3,
+    "depends_on": [
+      "T0039"
+    ],
+    "sprint": "P1-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0047",
+    "project": "P1",
+    "title": "Write audit business logic",
+    "description": "Write audit business logic for the Apollo project.",
+    "tags": [
+      "audit",
+      "backend"
+    ],
+    "required_skills": [
+      "go"
+    ],
+    "difficulty": 3,
+    "estimate": 3,
+    "value": 62,
+    "priority": 2,
+    "depends_on": [],
+    "sprint": "P1-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0048",
+    "project": "P1",
+    "title": "Create feed dashboard",
+    "description": "Create feed dashboard for the Apollo project.",
+    "tags": [
+      "data",
+      "feed"
+    ],
+    "required_skills": [
+      "mongodb",
+      "postgresql",
+      "spark",
+      "sql"
+    ],
+    "difficulty": 2,
+    "estimate": 3,
+    "value": 57,
+    "priority": 4,
+    "depends_on": [
+      "T0046"
+    ],
+    "sprint": "P1-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0049",
+    "project": "P1",
+    "title": "Containerise payment",
+    "description": "Containerise payment for the Apollo project.",
+    "tags": [
+      "devops",
+      "payment"
+    ],
+    "required_skills": [
+      "docker"
+    ],
+    "difficulty": 1,
+    "estimate": 1,
+    "value": 57,
+    "priority": 4,
+    "depends_on": [],
+    "sprint": "P1-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0050",
+    "project": "P1",
+    "title": "Set up scheduler infrastructure",
+    "description": "Set up scheduler infrastructure for the Apollo project.",
+    "tags": [
+      "devops",
+      "up"
+    ],
+    "required_skills": [
+      "cicd",
+      "docker",
+      "kubernetes"
+    ],
+    "difficulty": 3,
+    "estimate": 5,
+    "value": 16,
+    "priority": 4,
+    "depends_on": [],
+    "sprint": "P1-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0051",
+    "project": "P2",
+    "title": "Implement session form",
+    "description": "Implement session form for the Borealis project.",
+    "tags": [
+      "frontend",
+      "session"
+    ],
+    "required_skills": [
+      "html_css"
+    ],
+    "difficulty": 3,
+    "estimate": 5,
+    "value": 19,
+    "priority": 2,
+    "depends_on": [],
+    "sprint": "P2-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0052",
+    "project": "P2",
+    "title": "Implement feed endpoint",
+    "description": "Implement feed endpoint for the Borealis project.",
+    "tags": [
+      "backend",
+      "feed"
+    ],
+    "required_skills": [
+      "go"
+    ],
+    "difficulty": 5,
+    "estimate": 13,
+    "value": 83,
+    "priority": 2,
+    "depends_on": [],
+    "sprint": "P2-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0053",
+    "project": "P2",
+    "title": "Fix billing rendering bug",
+    "description": "Fix billing rendering bug for the Borealis project.",
+    "tags": [
+      "billing",
+      "frontend"
+    ],
+    "required_skills": [
+      "vue"
+    ],
+    "difficulty": 1,
+    "estimate": 2,
+    "value": 31,
+    "priority": 4,
+    "depends_on": [],
+    "sprint": "P2-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0054",
+    "project": "P2",
+    "title": "Optimise session query path",
+    "description": "Optimise session query path for the Borealis project.",
+    "tags": [
+      "backend",
+      "session"
+    ],
+    "required_skills": [
+      "go",
+      "python"
+    ],
+    "difficulty": 4,
+    "estimate": 5,
+    "value": 65,
+    "priority": 3,
+    "depends_on": [
+      "T0051"
+    ],
+    "sprint": "P2-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0055",
+    "project": "P2",
+    "title": "Implement cart endpoint",
+    "description": "Implement cart endpoint for the Borealis project.",
+    "tags": [
+      "backend",
+      "cart"
+    ],
+    "required_skills": [
+      "nodejs",
+      "ruby"
+    ],
+    "difficulty": 2,
+    "estimate": 2,
+    "value": 19,
+    "priority": 3,
+    "depends_on": [],
+    "sprint": "P2-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0056",
+    "project": "P2",
+    "title": "Optimise export startup",
+    "description": "Optimise export startup for the Borealis project.",
+    "tags": [
+      "export",
+      "mobile"
+    ],
+    "required_skills": [
+      "swift"
+    ],
+    "difficulty": 2,
+    "estimate": 2,
+    "value": 40,
+    "priority": 1,
+    "depends_on": [
+      "T0052"
+    ],
+    "sprint": "P2-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0057",
+    "project": "P2",
+    "title": "Redesign notification component",
+    "description": "Redesign notification component for the Borealis project.",
+    "tags": [
+      "frontend",
+      "notification"
+    ],
+    "required_skills": [
+      "javascript",
+      "nextjs",
+      "typescript"
+    ],
+    "difficulty": 5,
+    "estimate": 13,
+    "value": 69,
+    "priority": 3,
+    "depends_on": [
+      "T0055"
+    ],
+    "sprint": "P2-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0058",
+    "project": "P2",
+    "title": "Optimise inventory query path",
+    "description": "Optimise inventory query path for the Borealis project.",
+    "tags": [
+      "backend",
+      "inventory"
+    ],
+    "required_skills": [
+      "csharp",
+      "nodejs",
+      "ruby"
+    ],
+    "difficulty": 4,
+    "estimate": 8,
+    "value": 29,
+    "priority": 2,
+    "depends_on": [
+      "T0057"
+    ],
+    "sprint": "P2-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0059",
+    "project": "P2",
+    "title": "Fix catalogue rendering bug",
+    "description": "Fix catalogue rendering bug for the Borealis project.",
+    "tags": [
+      "catalogue",
+      "frontend"
+    ],
+    "required_skills": [
+      "html_css",
+      "react"
+    ],
+    "difficulty": 1,
+    "estimate": 1,
+    "value": 49,
+    "priority": 3,
+    "depends_on": [],
+    "sprint": "P2-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0060",
+    "project": "P2",
+    "title": "Build auth screen",
+    "description": "Build auth screen for the Borealis project.",
+    "tags": [
+      "auth",
+      "mobile"
+    ],
+    "required_skills": [
+      "kotlin",
+      "swift"
+    ],
+    "difficulty": 3,
+    "estimate": 5,
+    "value": 69,
+    "priority": 3,
+    "depends_on": [
+      "T0055"
+    ],
+    "sprint": "P2-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0061",
+    "project": "P2",
+    "title": "Implement messaging endpoint",
+    "description": "Implement messaging endpoint for the Borealis project.",
+    "tags": [
+      "backend",
+      "messaging"
+    ],
+    "required_skills": [
+      "java",
+      "nodejs",
+      "ruby"
+    ],
+    "difficulty": 3,
+    "estimate": 3,
+    "value": 17,
+    "priority": 3,
+    "depends_on": [
+      "T0057",
+      "T0054"
+    ],
+    "sprint": "P2-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0062",
+    "project": "P2",
+    "title": "Build export screen",
+    "description": "Build export screen for the Borealis project.",
+    "tags": [
+      "export",
+      "frontend"
+    ],
+    "required_skills": [
+      "javascript",
+      "nextjs",
+      "typescript"
+    ],
+    "difficulty": 4,
+    "estimate": 8,
+    "value": 77,
+    "priority": 3,
+    "depends_on": [
+      "T0058",
+      "T0061"
+    ],
+    "sprint": "P2-S2",
+    "assignee": null
+  },
+  {
+    "id": "T0063",
+    "project": "P2",
+    "title": "Fix auth crash",
+    "description": "Fix auth crash for the Borealis project.",
+    "tags": [
+      "auth",
+      "mobile"
+    ],
+    "required_skills": [
+      "kotlin",
+      "swift"
+    ],
+    "difficulty": 4,
+    "estimate": 5,
+    "value": 90,
+    "priority": 3,
+    "depends_on": [
+      "T0056",
+      "T0059"
+    ],
+    "sprint": "P2-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0064",
+    "project": "P2",
+    "title": "Fix profile crash",
+    "description": "Fix profile crash for the Borealis project.",
+    "tags": [
+      "mobile",
+      "profile"
+    ],
+    "required_skills": [
+      "kotlin",
+      "swift"
+    ],
+    "difficulty": 4,
+    "estimate": 5,
+    "value": 52,
+    "priority": 1,
+    "depends_on": [
+      "T0058",
+      "T0060"
+    ],
+    "sprint": "P2-S2",
+    "assignee": null
+  },
+  {
+    "id": "T0065",
+    "project": "P2",
+    "title": "Refactor auth service",
+    "description": "Refactor auth service for the Borealis project.",
+    "tags": [
+      "auth",
+      "backend"
+    ],
+    "required_skills": [
+      "flutter",
+      "go",
+      "ruby"
+    ],
+    "difficulty": 1,
+    "estimate": 1,
+    "value": 49,
+    "priority": 3,
+    "depends_on": [
+      "T0059",
+      "T0058"
+    ],
+    "sprint": "P2-S2",
+    "assignee": null
+  },
+  {
+    "id": "T0066",
+    "project": "P2",
+    "title": "Add search API",
+    "description": "Add search API for the Borealis project.",
+    "tags": [
+      "backend",
+      "search"
+    ],
+    "required_skills": [
+      "csharp",
+      "python",
+      "ruby"
+    ],
+    "difficulty": 3,
+    "estimate": 5,
+    "value": 75,
+    "priority": 2,
+    "depends_on": [
+      "T0063",
+      "T0064"
+    ],
+    "sprint": "P2-S2",
+    "assignee": null
+  },
+  {
+    "id": "T0067",
+    "project": "P2",
+    "title": "Add notification to the UI",
+    "description": "Add notification to the UI for the Borealis project.",
+    "tags": [
+      "frontend",
+      "notification"
+    ],
+    "required_skills": [
+      "react"
+    ],
+    "difficulty": 5,
+    "estimate": 13,
+    "value": 34,
+    "priority": 2,
+    "depends_on": [
+      "T0059",
+      "T0065"
+    ],
+    "sprint": "P2-S2",
+    "assignee": null
+  },
+  {
+    "id": "T0068",
+    "project": "P2",
+    "title": "Add payment flow",
+    "description": "Add payment flow for the Borealis project.",
+    "tags": [
+      "mobile",
+      "payment"
+    ],
+    "required_skills": [
+      "kotlin",
+      "swift"
+    ],
+    "difficulty": 3,
+    "estimate": 3,
+    "value": 86,
+    "priority": 2,
+    "depends_on": [],
+    "sprint": "P2-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0069",
+    "project": "P2",
+    "title": "Add session flow",
+    "description": "Add session flow for the Borealis project.",
+    "tags": [
+      "mobile",
+      "session"
+    ],
+    "required_skills": [
+      "rust",
+      "swift"
+    ],
+    "difficulty": 1,
+    "estimate": 2,
+    "value": 96,
+    "priority": 3,
+    "depends_on": [],
+    "sprint": "P2-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0070",
+    "project": "P2",
+    "title": "Implement billing form",
+    "description": "Implement billing form for the Borealis project.",
+    "tags": [
+      "billing",
+      "frontend"
+    ],
+    "required_skills": [
+      "flutter",
+      "html_css",
+      "typescript",
+      "vue"
+    ],
+    "difficulty": 2,
+    "estimate": 3,
+    "value": 34,
+    "priority": 2,
+    "depends_on": [],
+    "sprint": "P2-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0071",
+    "project": "P2",
+    "title": "Optimise messaging query path",
+    "description": "Optimise messaging query path for the Borealis project.",
+    "tags": [
+      "backend",
+      "messaging"
+    ],
+    "required_skills": [
+      "csharp",
+      "go"
+    ],
+    "difficulty": 3,
+    "estimate": 3,
+    "value": 35,
+    "priority": 4,
+    "depends_on": [
+      "T0067",
+      "T0068"
+    ],
+    "sprint": "P2-S2",
+    "assignee": null
+  },
+  {
+    "id": "T0072",
+    "project": "P2",
+    "title": "Fix checkout crash",
+    "description": "Fix checkout crash for the Borealis project.",
+    "tags": [
+      "checkout",
+      "mobile"
+    ],
+    "required_skills": [
+      "kotlin",
+      "swift"
+    ],
+    "difficulty": 4,
+    "estimate": 5,
+    "value": 46,
+    "priority": 1,
+    "depends_on": [],
+    "sprint": "P2-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0073",
+    "project": "P2",
+    "title": "Fix messaging crash",
+    "description": "Fix messaging crash for the Borealis project.",
+    "tags": [
+      "messaging",
+      "mobile"
+    ],
+    "required_skills": [
+      "swift"
+    ],
+    "difficulty": 1,
+    "estimate": 1,
+    "value": 67,
+    "priority": 4,
+    "depends_on": [
+      "T0071",
+      "T0069"
+    ],
+    "sprint": "P2-S3",
+    "assignee": null
+  },
+  {
+    "id": "T0074",
+    "project": "P2",
+    "title": "Implement checkout offline sync",
+    "description": "Implement checkout offline sync for the Borealis project.",
+    "tags": [
+      "checkout",
+      "mobile"
+    ],
+    "required_skills": [
+      "kotlin",
+      "swift"
+    ],
+    "difficulty": 2,
+    "estimate": 2,
+    "value": 57,
+    "priority": 2,
+    "depends_on": [
+      "T0066",
+      "T0069"
+    ],
+    "sprint": "P2-S2",
+    "assignee": null
+  },
+  {
+    "id": "T0075",
+    "project": "P2",
+    "title": "Build session screen",
+    "description": "Build session screen for the Borealis project.",
+    "tags": [
+      "frontend",
+      "session"
+    ],
+    "required_skills": [
+      "html_css",
+      "react",
+      "typescript"
+    ],
+    "difficulty": 1,
+    "estimate": 2,
+    "value": 99,
+    "priority": 4,
+    "depends_on": [
+      "T0071",
+      "T0072"
+    ],
+    "sprint": "P2-S3",
+    "assignee": null
+  },
+  {
+    "id": "T0076",
+    "project": "P2",
+    "title": "Optimise messaging query path",
+    "description": "Optimise messaging query path for the Borealis project.",
+    "tags": [
+      "backend",
+      "messaging"
+    ],
+    "required_skills": [
+      "csharp",
+      "python",
+      "ruby"
+    ],
+    "difficulty": 2,
+    "estimate": 2,
+    "value": 80,
+    "priority": 4,
+    "depends_on": [
+      "T0075"
+    ],
+    "sprint": "P2-S3",
+    "assignee": null
+  },
+  {
+    "id": "T0077",
+    "project": "P2",
+    "title": "Write feed business logic",
+    "description": "Write feed business logic for the Borealis project.",
+    "tags": [
+      "backend",
+      "feed"
+    ],
+    "required_skills": [
+      "nodejs"
+    ],
+    "difficulty": 2,
+    "estimate": 2,
+    "value": 16,
+    "priority": 2,
+    "depends_on": [],
+    "sprint": "P2-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0078",
+    "project": "P2",
+    "title": "Write messaging business logic",
+    "description": "Write messaging business logic for the Borealis project.",
+    "tags": [
+      "backend",
+      "messaging"
+    ],
+    "required_skills": [
+      "python"
+    ],
+    "difficulty": 4,
+    "estimate": 8,
+    "value": 86,
+    "priority": 3,
+    "depends_on": [
+      "T0076",
+      "T0072"
+    ],
+    "sprint": "P2-S3",
+    "assignee": null
+  },
+  {
+    "id": "T0079",
+    "project": "P2",
+    "title": "Write scheduler business logic",
+    "description": "Write scheduler business logic for the Borealis project.",
+    "tags": [
+      "backend",
+      "scheduler"
+    ],
+    "required_skills": [
+      "ruby"
+    ],
+    "difficulty": 1,
+    "estimate": 2,
+    "value": 10,
+    "priority": 3,
+    "depends_on": [
+      "T0072"
+    ],
+    "sprint": "P2-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0080",
+    "project": "P2",
+    "title": "Optimise feed startup",
+    "description": "Optimise feed startup for the Borealis project.",
+    "tags": [
+      "feed",
+      "mobile"
+    ],
+    "required_skills": [
+      "kotlin"
+    ],
+    "difficulty": 3,
+    "estimate": 5,
+    "value": 18,
+    "priority": 4,
+    "depends_on": [
+      "T0072",
+      "T0073"
+    ],
+    "sprint": "P2-S3",
+    "assignee": null
+  },
+  {
+    "id": "T0081",
+    "project": "P2",
+    "title": "Write export business logic",
+    "description": "Write export business logic for the Borealis project.",
+    "tags": [
+      "backend",
+      "export"
+    ],
+    "required_skills": [
+      "csharp",
+      "go",
+      "python"
+    ],
+    "difficulty": 1,
+    "estimate": 2,
+    "value": 57,
+    "priority": 2,
+    "depends_on": [
+      "T0079"
+    ],
+    "sprint": "P2-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0082",
+    "project": "P2",
+    "title": "Fix payment crash",
+    "description": "Fix payment crash for the Borealis project.",
+    "tags": [
+      "mobile",
+      "payment"
+    ],
+    "required_skills": [
+      "kotlin",
+      "swift"
+    ],
+    "difficulty": 4,
+    "estimate": 8,
+    "value": 27,
+    "priority": 1,
+    "depends_on": [
+      "T0081"
+    ],
+    "sprint": "P2-S2",
+    "assignee": null
+  },
+  {
+    "id": "T0083",
+    "project": "P2",
+    "title": "Add catalogue API",
+    "description": "Add catalogue API for the Borealis project.",
+    "tags": [
+      "backend",
+      "catalogue"
+    ],
+    "required_skills": [
+      "ruby"
+    ],
+    "difficulty": 3,
+    "estimate": 5,
+    "value": 90,
+    "priority": 2,
+    "depends_on": [],
+    "sprint": "P2-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0084",
+    "project": "P2",
+    "title": "Build session screen",
+    "description": "Build session screen for the Borealis project.",
+    "tags": [
+      "mobile",
+      "session"
+    ],
+    "required_skills": [
+      "kotlin",
+      "swift"
+    ],
+    "difficulty": 2,
+    "estimate": 2,
+    "value": 15,
+    "priority": 2,
+    "depends_on": [
+      "T0078"
+    ],
+    "sprint": "P2-S4",
+    "assignee": null
+  },
+  {
+    "id": "T0085",
+    "project": "P2",
+    "title": "Implement cart form",
+    "description": "Implement cart form for the Borealis project.",
+    "tags": [
+      "cart",
+      "frontend"
+    ],
+    "required_skills": [
+      "javascript",
+      "react",
+      "vue"
+    ],
+    "difficulty": 4,
+    "estimate": 5,
+    "value": 46,
+    "priority": 2,
+    "depends_on": [
+      "T0082"
+    ],
+    "sprint": "P2-S2",
+    "assignee": null
+  },
+  {
+    "id": "T0086",
+    "project": "P2",
+    "title": "Fix onboarding crash",
+    "description": "Fix onboarding crash for the Borealis project.",
+    "tags": [
+      "mobile",
+      "onboarding"
+    ],
+    "required_skills": [
+      "swift"
+    ],
+    "difficulty": 3,
+    "estimate": 5,
+    "value": 66,
+    "priority": 4,
+    "depends_on": [
+      "T0083",
+      "T0081"
+    ],
+    "sprint": "P2-S2",
+    "assignee": null
+  },
+  {
+    "id": "T0087",
+    "project": "P2",
+    "title": "Add notification to the UI",
+    "description": "Add notification to the UI for the Borealis project.",
+    "tags": [
+      "frontend",
+      "notification"
+    ],
+    "required_skills": [
+      "nextjs",
+      "vue"
+    ],
+    "difficulty": 2,
+    "estimate": 3,
+    "value": 20,
+    "priority": 3,
+    "depends_on": [],
+    "sprint": "P2-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0088",
+    "project": "P2",
+    "title": "Implement wallet offline sync",
+    "description": "Implement wallet offline sync for the Borealis project.",
+    "tags": [
+      "mobile",
+      "wallet"
+    ],
+    "required_skills": [
+      "swift"
+    ],
+    "difficulty": 2,
+    "estimate": 2,
+    "value": 51,
+    "priority": 3,
+    "depends_on": [
+      "T0081"
+    ],
+    "sprint": "P2-S2",
+    "assignee": null
+  },
+  {
+    "id": "T0089",
+    "project": "P2",
+    "title": "Fix wallet rendering bug",
+    "description": "Fix wallet rendering bug for the Borealis project.",
+    "tags": [
+      "frontend",
+      "wallet"
+    ],
+    "required_skills": [
+      "nextjs",
+      "typescript",
+      "vue"
+    ],
+    "difficulty": 2,
+    "estimate": 2,
+    "value": 55,
+    "priority": 3,
+    "depends_on": [
+      "T0084"
+    ],
+    "sprint": "P2-S4",
+    "assignee": null
+  },
+  {
+    "id": "T0090",
+    "project": "P2",
+    "title": "Add catalogue to the UI",
+    "description": "Add catalogue to the UI for the Borealis project.",
+    "tags": [
+      "catalogue",
+      "frontend"
+    ],
+    "required_skills": [
+      "javascript"
+    ],
+    "difficulty": 3,
+    "estimate": 5,
+    "value": 56,
+    "priority": 3,
+    "depends_on": [
+      "T0083"
+    ],
+    "sprint": "P2-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0091",
+    "project": "P2",
+    "title": "Refactor login service",
+    "description": "Refactor login service for the Borealis project.",
+    "tags": [
+      "backend",
+      "login"
+    ],
+    "required_skills": [
+      "csharp",
+      "rust"
+    ],
+    "difficulty": 3,
+    "estimate": 5,
+    "value": 14,
+    "priority": 1,
+    "depends_on": [
+      "T0090"
+    ],
+    "sprint": "P2-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0092",
+    "project": "P2",
+    "title": "Fix auth crash",
+    "description": "Fix auth crash for the Borealis project.",
+    "tags": [
+      "auth",
+      "mobile"
+    ],
+    "required_skills": [
+      "kotlin",
+      "swift"
+    ],
+    "difficulty": 3,
+    "estimate": 5,
+    "value": 57,
+    "priority": 2,
+    "depends_on": [],
+    "sprint": "P2-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0093",
+    "project": "P2",
+    "title": "Optimise search startup",
+    "description": "Optimise search startup for the Borealis project.",
+    "tags": [
+      "mobile",
+      "search"
+    ],
+    "required_skills": [
+      "kotlin",
+      "swift"
+    ],
+    "difficulty": 3,
+    "estimate": 3,
+    "value": 24,
+    "priority": 1,
+    "depends_on": [],
+    "sprint": "P2-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0094",
+    "project": "P2",
+    "title": "Implement export offline sync",
+    "description": "Implement export offline sync for the Borealis project.",
+    "tags": [
+      "export",
+      "mobile"
+    ],
+    "required_skills": [
+      "kotlin",
+      "swift"
+    ],
+    "difficulty": 4,
+    "estimate": 8,
+    "value": 37,
+    "priority": 4,
+    "depends_on": [],
+    "sprint": "P2-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0095",
+    "project": "P2",
+    "title": "Fix dashboard rendering bug",
+    "description": "Fix dashboard rendering bug for the Borealis project.",
+    "tags": [
+      "dashboard",
+      "frontend"
+    ],
+    "required_skills": [
+      "flutter",
+      "typescript"
+    ],
+    "difficulty": 4,
+    "estimate": 8,
+    "value": 32,
+    "priority": 4,
+    "depends_on": [],
+    "sprint": "P2-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0096",
+    "project": "P2",
+    "title": "Build inventory screen",
+    "description": "Build inventory screen for the Borealis project.",
+    "tags": [
+      "frontend",
+      "inventory"
+    ],
+    "required_skills": [
+      "nextjs",
+      "react"
+    ],
+    "difficulty": 4,
+    "estimate": 8,
+    "value": 48,
+    "priority": 4,
+    "depends_on": [
+      "T0094"
+    ],
+    "sprint": "P2-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0097",
+    "project": "P2",
+    "title": "Refactor auth service",
+    "description": "Refactor auth service for the Borealis project.",
+    "tags": [
+      "auth",
+      "backend"
+    ],
+    "required_skills": [
+      "java",
+      "python",
+      "ruby"
+    ],
+    "difficulty": 4,
+    "estimate": 5,
+    "value": 73,
+    "priority": 1,
+    "depends_on": [
+      "T0095",
+      "T0090"
+    ],
+    "sprint": "P2-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0098",
+    "project": "P2",
+    "title": "Write auth business logic",
+    "description": "Write auth business logic for the Borealis project.",
+    "tags": [
+      "auth",
+      "backend"
+    ],
+    "required_skills": [
+      "csharp",
+      "java"
+    ],
+    "difficulty": 3,
+    "estimate": 3,
+    "value": 18,
+    "priority": 2,
+    "depends_on": [],
+    "sprint": "P2-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0099",
+    "project": "P2",
+    "title": "Optimise export query path",
+    "description": "Optimise export query path for the Borealis project.",
+    "tags": [
+      "backend",
+      "export"
+    ],
+    "required_skills": [
+      "csharp",
+      "go"
+    ],
+    "difficulty": 1,
+    "estimate": 2,
+    "value": 92,
+    "priority": 1,
+    "depends_on": [
+      "T0096"
+    ],
+    "sprint": "P2-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0100",
+    "project": "P2",
+    "title": "Implement auth form",
+    "description": "Implement auth form for the Borealis project.",
+    "tags": [
+      "auth",
+      "frontend"
+    ],
+    "required_skills": [
+      "html_css"
+    ],
+    "difficulty": 3,
+    "estimate": 3,
+    "value": 26,
+    "priority": 2,
+    "depends_on": [],
+    "sprint": "P2-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0101",
+    "project": "P3",
+    "title": "Create export dashboard",
+    "description": "Create export dashboard for the Cirrus project.",
+    "tags": [
+      "data",
+      "export"
+    ],
+    "required_skills": [
+      "mongodb",
+      "pandas"
+    ],
+    "difficulty": 3,
+    "estimate": 3,
+    "value": 60,
+    "priority": 3,
+    "depends_on": [],
+    "sprint": "P3-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0102",
+    "project": "P3",
+    "title": "Model scheduler schema",
+    "description": "Model scheduler schema for the Cirrus project.",
+    "tags": [
+      "data",
+      "scheduler"
+    ],
+    "required_skills": [
+      "airflow",
+      "rust",
+      "spark",
+      "sql"
+    ],
+    "difficulty": 2,
+    "estimate": 3,
+    "value": 46,
+    "priority": 3,
+    "depends_on": [
+      "T0101"
+    ],
+    "sprint": "P3-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0103",
+    "project": "P3",
+    "title": "Create search dashboard",
+    "description": "Create search dashboard for the Cirrus project.",
+    "tags": [
+      "data",
+      "search"
+    ],
+    "required_skills": [
+      "mongodb",
+      "pandas"
+    ],
+    "difficulty": 2,
+    "estimate": 3,
+    "value": 16,
+    "priority": 3,
+    "depends_on": [
+      "T0102"
+    ],
+    "sprint": "P3-S2",
+    "assignee": null
+  },
+  {
+    "id": "T0104",
+    "project": "P3",
+    "title": "Add import ETL job",
+    "description": "Add import ETL job for the Cirrus project.",
+    "tags": [
+      "data",
+      "import"
+    ],
+    "required_skills": [
+      "pandas",
+      "sql"
+    ],
+    "difficulty": 3,
+    "estimate": 5,
+    "value": 89,
+    "priority": 3,
+    "depends_on": [
+      "T0102"
+    ],
+    "sprint": "P3-S2",
+    "assignee": null
+  },
+  {
+    "id": "T0105",
+    "project": "P3",
+    "title": "Model profile schema",
+    "description": "Model profile schema for the Cirrus project.",
+    "tags": [
+      "data",
+      "profile"
+    ],
+    "required_skills": [
+      "airflow",
+      "mongodb"
+    ],
+    "difficulty": 3,
+    "estimate": 5,
+    "value": 28,
+    "priority": 2,
+    "depends_on": [
+      "T0104",
+      "T0102"
+    ],
+    "sprint": "P3-S2",
+    "assignee": null
+  },
+  {
+    "id": "T0106",
+    "project": "P3",
+    "title": "Optimise export query path",
+    "description": "Optimise export query path for the Cirrus project.",
+    "tags": [
+      "backend",
+      "export"
+    ],
+    "required_skills": [
+      "python"
+    ],
+    "difficulty": 1,
+    "estimate": 2,
+    "value": 70,
+    "priority": 3,
+    "depends_on": [],
+    "sprint": "P3-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0107",
+    "project": "P3",
+    "title": "Migrate export table",
+    "description": "Migrate export table for the Cirrus project.",
+    "tags": [
+      "data",
+      "export"
+    ],
+    "required_skills": [
+      "mongodb"
+    ],
+    "difficulty": 5,
+    "estimate": 13,
+    "value": 30,
+    "priority": 2,
+    "depends_on": [
+      "T0104",
+      "T0103"
+    ],
+    "sprint": "P3-S2",
+    "assignee": null
+  },
+  {
+    "id": "T0108",
+    "project": "P3",
+    "title": "Add scheduler API",
+    "description": "Add scheduler API for the Cirrus project.",
+    "tags": [
+      "backend",
+      "scheduler"
+    ],
+    "required_skills": [
+      "csharp",
+      "ruby"
+    ],
+    "difficulty": 3,
+    "estimate": 5,
+    "value": 70,
+    "priority": 4,
+    "depends_on": [],
+    "sprint": "P3-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0109",
+    "project": "P3",
+    "title": "Add inventory monitoring",
+    "description": "Add inventory monitoring for the Cirrus project.",
+    "tags": [
+      "devops",
+      "inventory"
+    ],
+    "required_skills": [
+      "kubernetes",
+      "terraform"
+    ],
+    "difficulty": 3,
+    "estimate": 3,
+    "value": 86,
+    "priority": 3,
+    "depends_on": [
+      "T0106"
+    ],
+    "sprint": "P3-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0110",
+    "project": "P3",
+    "title": "Write scheduler business logic",
+    "description": "Write scheduler business logic for the Cirrus project.",
+    "tags": [
+      "backend",
+      "scheduler"
+    ],
+    "required_skills": [
+      "ruby"
+    ],
+    "difficulty": 1,
+    "estimate": 2,
+    "value": 31,
+    "priority": 3,
+    "depends_on": [
+      "T0102"
+    ],
+    "sprint": "P3-S2",
+    "assignee": null
+  },
+  {
+    "id": "T0111",
+    "project": "P3",
+    "title": "Write cart business logic",
+    "description": "Write cart business logic for the Cirrus project.",
+    "tags": [
+      "backend",
+      "cart"
+    ],
+    "required_skills": [
+      "ruby"
+    ],
+    "difficulty": 2,
+    "estimate": 2,
+    "value": 34,
+    "priority": 1,
+    "depends_on": [
+      "T0106",
+      "T0108"
+    ],
+    "sprint": "P3-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0112",
+    "project": "P3",
+    "title": "Containerise search",
+    "description": "Containerise search for the Cirrus project.",
+    "tags": [
+      "devops",
+      "search"
+    ],
+    "required_skills": [
+      "aws",
+      "kubernetes"
+    ],
+    "difficulty": 3,
+    "estimate": 5,
+    "value": 17,
+    "priority": 3,
+    "depends_on": [],
+    "sprint": "P3-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0113",
+    "project": "P3",
+    "title": "Refactor import service",
+    "description": "Refactor import service for the Cirrus project.",
+    "tags": [
+      "backend",
+      "import"
+    ],
+    "required_skills": [
+      "go",
+      "ruby"
+    ],
+    "difficulty": 3,
+    "estimate": 5,
+    "value": 32,
+    "priority": 3,
+    "depends_on": [],
+    "sprint": "P3-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0114",
+    "project": "P3",
+    "title": "Add import API",
+    "description": "Add import API for the Cirrus project.",
+    "tags": [
+      "backend",
+      "import"
+    ],
+    "required_skills": [
+      "nodejs",
+      "ruby"
+    ],
+    "difficulty": 3,
+    "estimate": 3,
+    "value": 41,
+    "priority": 2,
+    "depends_on": [
+      "T0112"
+    ],
+    "sprint": "P3-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0115",
+    "project": "P3",
+    "title": "Automate billing deployment",
+    "description": "Automate billing deployment for the Cirrus project.",
+    "tags": [
+      "billing",
+      "devops"
+    ],
+    "required_skills": [
+      "aws",
+      "cicd"
+    ],
+    "difficulty": 4,
+    "estimate": 8,
+    "value": 71,
+    "priority": 2,
+    "depends_on": [
+      "T0109"
+    ],
+    "sprint": "P3-S2",
+    "assignee": null
+  },
+  {
+    "id": "T0116",
+    "project": "P3",
+    "title": "Add billing API",
+    "description": "Add billing API for the Cirrus project.",
+    "tags": [
+      "backend",
+      "billing"
+    ],
+    "required_skills": [
+      "csharp"
+    ],
+    "difficulty": 3,
+    "estimate": 5,
+    "value": 60,
+    "priority": 4,
+    "depends_on": [],
+    "sprint": "P3-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0117",
+    "project": "P3",
+    "title": "Add checkout ETL job",
+    "description": "Add checkout ETL job for the Cirrus project.",
+    "tags": [
+      "checkout",
+      "data"
+    ],
+    "required_skills": [
+      "mongodb",
+      "sql"
+    ],
+    "difficulty": 5,
+    "estimate": 13,
+    "value": 71,
+    "priority": 2,
+    "depends_on": [
+      "T0112"
+    ],
+    "sprint": "P3-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0118",
+    "project": "P3",
+    "title": "Add import API",
+    "description": "Add import API for the Cirrus project.",
+    "tags": [
+      "backend",
+      "import"
+    ],
+    "required_skills": [
+      "java",
+      "nodejs",
+      "python"
+    ],
+    "difficulty": 3,
+    "estimate": 3,
+    "value": 41,
+    "priority": 1,
+    "depends_on": [
+      "T0113"
+    ],
+    "sprint": "P3-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0119",
+    "project": "P3",
+    "title": "Refactor catalogue service",
+    "description": "Refactor catalogue service for the Cirrus project.",
+    "tags": [
+      "backend",
+      "catalogue"
+    ],
+    "required_skills": [
+      "python"
+    ],
+    "difficulty": 1,
+    "estimate": 2,
+    "value": 70,
+    "priority": 1,
+    "depends_on": [
+      "T0116"
+    ],
+    "sprint": "P3-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0120",
+    "project": "P3",
+    "title": "Build import pipeline",
+    "description": "Build import pipeline for the Cirrus project.",
+    "tags": [
+      "data",
+      "import"
+    ],
+    "required_skills": [
+      "pandas"
+    ],
+    "difficulty": 3,
+    "estimate": 5,
+    "value": 71,
+    "priority": 3,
+    "depends_on": [
+      "T0119"
+    ],
+    "sprint": "P3-S2",
+    "assignee": null
+  },
+  {
+    "id": "T0121",
+    "project": "P3",
+    "title": "Add billing monitoring",
+    "description": "Add billing monitoring for the Cirrus project.",
+    "tags": [
+      "billing",
+      "devops"
+    ],
+    "required_skills": [
+      "cicd",
+      "docker",
+      "kubernetes"
+    ],
+    "difficulty": 3,
+    "estimate": 3,
+    "value": 32,
+    "priority": 2,
+    "depends_on": [
+      "T0120",
+      "T0116"
+    ],
+    "sprint": "P3-S2",
+    "assignee": null
+  },
+  {
+    "id": "T0122",
+    "project": "P3",
+    "title": "Build cart pipeline",
+    "description": "Build cart pipeline for the Cirrus project.",
+    "tags": [
+      "cart",
+      "data"
+    ],
+    "required_skills": [
+      "mongodb",
+      "postgresql"
+    ],
+    "difficulty": 4,
+    "estimate": 5,
+    "value": 48,
+    "priority": 3,
+    "depends_on": [],
+    "sprint": "P3-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0123",
+    "project": "P3",
+    "title": "Add billing ETL job",
+    "description": "Add billing ETL job for the Cirrus project.",
+    "tags": [
+      "billing",
+      "data"
+    ],
+    "required_skills": [
+      "airflow",
+      "pandas",
+      "terraform"
+    ],
+    "difficulty": 4,
+    "estimate": 5,
+    "value": 74,
+    "priority": 3,
+    "depends_on": [
+      "T0120",
+      "T0116"
+    ],
+    "sprint": "P3-S2",
+    "assignee": null
+  },
+  {
+    "id": "T0124",
+    "project": "P3",
+    "title": "Build report pipeline",
+    "description": "Build report pipeline for the Cirrus project.",
+    "tags": [
+      "data",
+      "report"
+    ],
+    "required_skills": [
+      "pandas"
+    ],
+    "difficulty": 3,
+    "estimate": 3,
+    "value": 11,
+    "priority": 3,
+    "depends_on": [],
+    "sprint": "P3-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0125",
+    "project": "P3",
+    "title": "Configure inventory pipeline",
+    "description": "Configure inventory pipeline for the Cirrus project.",
+    "tags": [
+      "devops",
+      "inventory"
+    ],
+    "required_skills": [
+      "aws"
+    ],
+    "difficulty": 3,
+    "estimate": 5,
+    "value": 64,
+    "priority": 3,
+    "depends_on": [
+      "T0124",
+      "T0118"
+    ],
+    "sprint": "P3-S2",
+    "assignee": null
+  },
+  {
+    "id": "T0126",
+    "project": "P3",
+    "title": "Create inventory dashboard",
+    "description": "Create inventory dashboard for the Cirrus project.",
+    "tags": [
+      "data",
+      "inventory"
+    ],
+    "required_skills": [
+      "postgresql"
+    ],
+    "difficulty": 5,
+    "estimate": 13,
+    "value": 51,
+    "priority": 4,
+    "depends_on": [
+      "T0118",
+      "T0122"
+    ],
+    "sprint": "P3-S2",
+    "assignee": null
+  },
+  {
+    "id": "T0127",
+    "project": "P3",
+    "title": "Add cart ETL job",
+    "description": "Add cart ETL job for the Cirrus project.",
+    "tags": [
+      "cart",
+      "data"
+    ],
+    "required_skills": [
+      "pandas"
+    ],
+    "difficulty": 4,
+    "estimate": 8,
+    "value": 48,
+    "priority": 3,
+    "depends_on": [],
+    "sprint": "P3-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0128",
+    "project": "P3",
+    "title": "Implement onboarding endpoint",
+    "description": "Implement onboarding endpoint for the Cirrus project.",
+    "tags": [
+      "backend",
+      "onboarding"
+    ],
+    "required_skills": [
+      "java",
+      "nodejs",
+      "python"
+    ],
+    "difficulty": 3,
+    "estimate": 5,
+    "value": 49,
+    "priority": 2,
+    "depends_on": [],
+    "sprint": "P3-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0129",
+    "project": "P3",
+    "title": "Write session business logic",
+    "description": "Write session business logic for the Cirrus project.",
+    "tags": [
+      "backend",
+      "session"
+    ],
+    "required_skills": [
+      "python",
+      "ruby"
+    ],
+    "difficulty": 3,
+    "estimate": 5,
+    "value": 57,
+    "priority": 3,
+    "depends_on": [
+      "T0121",
+      "T0127"
+    ],
+    "sprint": "P3-S3",
+    "assignee": null
+  },
+  {
+    "id": "T0130",
+    "project": "P3",
+    "title": "Model analytics schema",
+    "description": "Model analytics schema for the Cirrus project.",
+    "tags": [
+      "analytics",
+      "data"
+    ],
+    "required_skills": [
+      "pandas"
+    ],
+    "difficulty": 4,
+    "estimate": 8,
+    "value": 63,
+    "priority": 3,
+    "depends_on": [],
+    "sprint": "P3-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0131",
+    "project": "P3",
+    "title": "Configure inventory pipeline",
+    "description": "Configure inventory pipeline for the Cirrus project.",
+    "tags": [
+      "devops",
+      "inventory"
+    ],
+    "required_skills": [
+      "aws"
+    ],
+    "difficulty": 3,
+    "estimate": 3,
+    "value": 77,
+    "priority": 2,
+    "depends_on": [
+      "T0125"
+    ],
+    "sprint": "P3-S2",
+    "assignee": null
+  },
+  {
+    "id": "T0132",
+    "project": "P3",
+    "title": "Add payment API",
+    "description": "Add payment API for the Cirrus project.",
+    "tags": [
+      "backend",
+      "payment"
+    ],
+    "required_skills": [
+      "java",
+      "python",
+      "ruby"
+    ],
+    "difficulty": 3,
+    "estimate": 3,
+    "value": 31,
+    "priority": 2,
+    "depends_on": [
+      "T0127",
+      "T0124"
+    ],
+    "sprint": "P3-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0133",
+    "project": "P3",
+    "title": "Optimise profile query path",
+    "description": "Optimise profile query path for the Cirrus project.",
+    "tags": [
+      "backend",
+      "profile"
+    ],
+    "required_skills": [
+      "csharp",
+      "go",
+      "java"
+    ],
+    "difficulty": 1,
+    "estimate": 2,
+    "value": 17,
+    "priority": 3,
+    "depends_on": [
+      "T0127",
+      "T0125"
+    ],
+    "sprint": "P3-S2",
+    "assignee": null
+  },
+  {
+    "id": "T0134",
+    "project": "P3",
+    "title": "Optimise messaging query path",
+    "description": "Optimise messaging query path for the Cirrus project.",
+    "tags": [
+      "backend",
+      "messaging"
+    ],
+    "required_skills": [
+      "csharp",
+      "go",
+      "python"
+    ],
+    "difficulty": 3,
+    "estimate": 5,
+    "value": 12,
+    "priority": 2,
+    "depends_on": [],
+    "sprint": "P3-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0135",
+    "project": "P3",
+    "title": "Model scheduler schema",
+    "description": "Model scheduler schema for the Cirrus project.",
+    "tags": [
+      "data",
+      "scheduler"
+    ],
+    "required_skills": [
+      "sql"
+    ],
+    "difficulty": 3,
+    "estimate": 3,
+    "value": 79,
+    "priority": 4,
+    "depends_on": [
+      "T0134",
+      "T0129"
+    ],
+    "sprint": "P3-S3",
+    "assignee": null
+  },
+  {
+    "id": "T0136",
+    "project": "P3",
+    "title": "Create checkout dashboard",
+    "description": "Create checkout dashboard for the Cirrus project.",
+    "tags": [
+      "checkout",
+      "data"
+    ],
+    "required_skills": [
+      "pandas",
+      "postgresql"
+    ],
+    "difficulty": 4,
+    "estimate": 8,
+    "value": 57,
+    "priority": 4,
+    "depends_on": [],
+    "sprint": "P3-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0137",
+    "project": "P3",
+    "title": "Containerise cart",
+    "description": "Containerise cart for the Cirrus project.",
+    "tags": [
+      "cart",
+      "devops"
+    ],
+    "required_skills": [
+      "cicd",
+      "docker"
+    ],
+    "difficulty": 5,
+    "estimate": 8,
+    "value": 93,
+    "priority": 4,
+    "depends_on": [
+      "T0136",
+      "T0134"
+    ],
+    "sprint": "P3-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0138",
+    "project": "P3",
+    "title": "Model import schema",
+    "description": "Model import schema for the Cirrus project.",
+    "tags": [
+      "data",
+      "import"
+    ],
+    "required_skills": [
+      "airflow",
+      "postgresql"
+    ],
+    "difficulty": 4,
+    "estimate": 5,
+    "value": 10,
+    "priority": 3,
+    "depends_on": [
+      "T0130"
+    ],
+    "sprint": "P3-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0139",
+    "project": "P3",
+    "title": "Containerise inventory",
+    "description": "Containerise inventory for the Cirrus project.",
+    "tags": [
+      "devops",
+      "inventory"
+    ],
+    "required_skills": [
+      "aws",
+      "cicd",
+      "kubernetes"
+    ],
+    "difficulty": 4,
+    "estimate": 5,
+    "value": 68,
+    "priority": 2,
+    "depends_on": [],
+    "sprint": "P3-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0140",
+    "project": "P3",
+    "title": "Automate audit deployment",
+    "description": "Automate audit deployment for the Cirrus project.",
+    "tags": [
+      "audit",
+      "devops"
+    ],
+    "required_skills": [
+      "docker"
+    ],
+    "difficulty": 4,
+    "estimate": 8,
+    "value": 88,
+    "priority": 3,
+    "depends_on": [
+      "T0138",
+      "T0132"
+    ],
+    "sprint": "P3-S2",
+    "assignee": null
+  },
+  {
+    "id": "T0141",
+    "project": "P3",
+    "title": "Model dashboard schema",
+    "description": "Model dashboard schema for the Cirrus project.",
+    "tags": [
+      "dashboard",
+      "data"
+    ],
+    "required_skills": [
+      "sql"
+    ],
+    "difficulty": 3,
+    "estimate": 5,
+    "value": 86,
+    "priority": 3,
+    "depends_on": [],
+    "sprint": "P3-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0142",
+    "project": "P3",
+    "title": "Model audit schema",
+    "description": "Model audit schema for the Cirrus project.",
+    "tags": [
+      "audit",
+      "data"
+    ],
+    "required_skills": [
+      "pandas"
+    ],
+    "difficulty": 3,
+    "estimate": 3,
+    "value": 17,
+    "priority": 1,
+    "depends_on": [
+      "T0138",
+      "T0141"
+    ],
+    "sprint": "P3-S2",
+    "assignee": null
+  },
+  {
+    "id": "T0143",
+    "project": "P3",
+    "title": "Automate audit deployment",
+    "description": "Automate audit deployment for the Cirrus project.",
+    "tags": [
+      "audit",
+      "devops"
+    ],
+    "required_skills": [
+      "aws",
+      "cicd",
+      "kubernetes"
+    ],
+    "difficulty": 2,
+    "estimate": 2,
+    "value": 94,
+    "priority": 3,
+    "depends_on": [
+      "T0135"
+    ],
+    "sprint": "P3-S3",
+    "assignee": null
+  },
+  {
+    "id": "T0144",
+    "project": "P3",
+    "title": "Add onboarding monitoring",
+    "description": "Add onboarding monitoring for the Cirrus project.",
+    "tags": [
+      "devops",
+      "onboarding"
+    ],
+    "required_skills": [
+      "aws"
+    ],
+    "difficulty": 3,
+    "estimate": 5,
+    "value": 81,
+    "priority": 3,
+    "depends_on": [
+      "T0142",
+      "T0143"
+    ],
+    "sprint": "P3-S3",
+    "assignee": null
+  },
+  {
+    "id": "T0145",
+    "project": "P3",
+    "title": "Containerise export",
+    "description": "Containerise export for the Cirrus project.",
+    "tags": [
+      "devops",
+      "export"
+    ],
+    "required_skills": [
+      "aws",
+      "kubernetes"
+    ],
+    "difficulty": 1,
+    "estimate": 2,
+    "value": 33,
+    "priority": 3,
+    "depends_on": [],
+    "sprint": "P3-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0146",
+    "project": "P3",
+    "title": "Automate settings deployment",
+    "description": "Automate settings deployment for the Cirrus project.",
+    "tags": [
+      "devops",
+      "settings"
+    ],
+    "required_skills": [
+      "aws",
+      "kubernetes"
+    ],
+    "difficulty": 5,
+    "estimate": 13,
+    "value": 63,
+    "priority": 3,
+    "depends_on": [],
+    "sprint": "P3-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0147",
+    "project": "P3",
+    "title": "Create settings dashboard",
+    "description": "Create settings dashboard for the Cirrus project.",
+    "tags": [
+      "data",
+      "settings"
+    ],
+    "required_skills": [
+      "mongodb",
+      "postgresql"
+    ],
+    "difficulty": 3,
+    "estimate": 5,
+    "value": 57,
+    "priority": 1,
+    "depends_on": [],
+    "sprint": "P3-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0148",
+    "project": "P3",
+    "title": "Refactor checkout service",
+    "description": "Refactor checkout service for the Cirrus project.",
+    "tags": [
+      "backend",
+      "checkout"
+    ],
+    "required_skills": [
+      "csharp",
+      "go"
+    ],
+    "difficulty": 3,
+    "estimate": 3,
+    "value": 34,
+    "priority": 4,
+    "depends_on": [
+      "T0142",
+      "T0141"
+    ],
+    "sprint": "P3-S2",
+    "assignee": null
+  },
+  {
+    "id": "T0149",
+    "project": "P3",
+    "title": "Write dashboard business logic",
+    "description": "Write dashboard business logic for the Cirrus project.",
+    "tags": [
+      "backend",
+      "dashboard"
+    ],
+    "required_skills": [
+      "java",
+      "nodejs"
+    ],
+    "difficulty": 2,
+    "estimate": 2,
+    "value": 37,
+    "priority": 4,
+    "depends_on": [],
+    "sprint": "P3-S1",
+    "assignee": null
+  },
+  {
+    "id": "T0150",
+    "project": "P3",
+    "title": "Implement audit endpoint",
+    "description": "Implement audit endpoint for the Cirrus project.",
+    "tags": [
+      "audit",
+      "backend"
+    ],
+    "required_skills": [
+      "csharp",
+      "java"
+    ],
+    "difficulty": 4,
+    "estimate": 8,
+    "value": 40,
+    "priority": 3,
+    "depends_on": [
+      "T0146",
+      "T0148"
+    ],
+    "sprint": "P3-S3",
+    "assignee": null
+  },
+  {
+    "id": "T0151",
+    "project": "P3",
+    "title": "[Demo] Knapsack item A",
+    "description": "Planted sprint-planner demo task (see README.md).",
+    "tags": [
+      "demo",
+      "backend"
+    ],
+    "required_skills": [
+      "python"
+    ],
+    "difficulty": 3,
+    "estimate": 6,
+    "value": 60,
+    "priority": 2,
+    "depends_on": [],
+    "sprint": "P3-S4",
+    "assignee": null
+  },
+  {
+    "id": "T0152",
+    "project": "P3",
+    "title": "[Demo] Knapsack item B",
+    "description": "Planted sprint-planner demo task (see README.md).",
+    "tags": [
+      "demo",
+      "backend"
+    ],
+    "required_skills": [
+      "python"
+    ],
+    "difficulty": 3,
+    "estimate": 5,
+    "value": 40,
+    "priority": 2,
+    "depends_on": [],
+    "sprint": "P3-S4",
+    "assignee": null
+  },
+  {
+    "id": "T0153",
+    "project": "P3",
+    "title": "[Demo] Knapsack item C",
+    "description": "Planted sprint-planner demo task (see README.md).",
+    "tags": [
+      "demo",
+      "backend"
+    ],
+    "required_skills": [
+      "python"
+    ],
+    "difficulty": 3,
+    "estimate": 5,
+    "value": 40,
+    "priority": 2,
+    "depends_on": [],
+    "sprint": "P3-S4",
+    "assignee": null
+  }
+]
