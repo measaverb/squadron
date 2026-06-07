@@ -66,7 +66,7 @@ python planner.py
 
 # 시각화 대시보드
 pip install -r requirements.txt
-streamlit run app.py
+python -m streamlit run app.py
 ```
 
 ---
@@ -174,6 +174,8 @@ python allocator.py --sprint P2-S1   # 특정 스프린트 상세 배정
 ## Module 3 — 스프린트 플래너 (`planner.py`)
 
 스프린트 스토리포인트 용량 제한 하에서 비즈니스 가치(Value)의 총합을 최대화하는 태스크를 선택한다.
+초심자가 보기 쉽게 말하면, 스프린트 용량은 **가방 크기**, 태스크 estimate는 **차지하는 공간**,
+value는 **얻는 가치**이며, Module 3는 같은 용량 안에서 가장 좋은 태스크 조합을 찾는다.
 
 | 산출물 | 알고리즘 (계열) | 핵심 |
 |---|---|---|
@@ -191,17 +193,25 @@ python planner.py                                         # 전체 글로벌 일
 python planner.py --demo-only                             # P3-S4 배낭 문제 반례 데모 검증
 ```
 
+**대시보드 시각화 포인트**
+
+- **단일 스프린트 데모(P3-S4):** 용량 10 안에 A(6pt, 60가치), B(5pt, 40가치), C(5pt, 40가치)를 어떻게 담는지 보여준다.
+- **왜 Greedy가 실패하는지:** Greedy는 A 하나를 먼저 담아 60가치에서 멈추지만, DP/Backtracking은 B+C 조합으로 80가치를 얻는다.
+- **글로벌 플래닝:** 모든 스프린트에 대해 알고리즘별 총 가치, 용량 사용률, 선택된 태스크, 다음 스프린트로 이월된 태스크를 비교한다.
+- **Module 2 연동:** Module 3가 선택한 태스크만 배정기에 넘겨 개발자별 작업량과 미배정 태스크를 확인한다.
+
 ---
 
 ## 시각화 대시보드 (`app.py`)
 
-`streamlit run app.py` — 사이드바에서 `tasks.json`(정상 DAG) ↔ `tasks_broken.json`(사이클) 전환.
+`python -m streamlit run app.py` — 사이드바에서 `tasks.json`(정상 DAG) ↔ `tasks_broken.json`(사이클) 전환.
 
 | 탭 | 내용 |
 |---|---|
 | 📅 **Module 1 · 스케줄/임계경로** | Gantt 타임라인(작업+여유 막대), slack 표, 우선순위 실행 순서, 의존성 DAG(임계경로 강조) |
 | 🔁 **Module 1 · 사이클 검출** | 검출된 순환 경로, 스케줄 불가 집합, 사이클 그래프 |
 | 🗺️ **Module 1→2 · 전체 일정 배정** | 조직 집계(그리디 vs 헝가리안), 미배정 진단, 스프린트별 배정 현황, **개발자별 워크로드 + 가동률 막대**, 개발자 드릴다운 |
+| 📦 **Module 3 · 스프린트 플래너** | 배낭 문제를 가방 비유로 설명하는 단일 데모, Greedy/DP/Backtracking 비교, 스프린트별 용량 사용률, 이월 태스크, Module 2 배정 연동 |
 | 👥 **Module 2 · 배정** | 희소 스킬 반례 / 스프린트 단위 배정, 친화도 히트맵, 이분그래프(태스크→개발자) |
 
 > 사이클이 있는 프로젝트는 임계경로·타임라인이 정의되지 않으므로, 잘못된 수치를 그리지 않고
