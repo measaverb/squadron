@@ -25,10 +25,7 @@ import streamlit as st
 
 import scheduler as S          # Module 1 (표준 라이브러리만)
 import allocator as A          # Module 2 (표준 라이브러리만)
-<<<<<<< HEAD
 import planner as P            # Module 3 (표준 라이브러리만)
-=======
->>>>>>> 0e670f4d13acf5e78fc45abda606f1c1b0f221b6
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(HERE, "data")
@@ -81,18 +78,11 @@ st.sidebar.metric("프로젝트", len(projects))
 
 st.title("Squadron — 프로젝트 스케줄러 · 특성기반 배정기")
 
-<<<<<<< HEAD
 tab1, tab2, tab_alloc, tab_planner, tab3 = st.tabs([
     "📅 Module 1 · 스케줄/임계경로",
     "🔁 Module 1 · 사이클 검출",
     "🗺️ Module 1→2 · 전체 일정 배정",
     "📦 Module 3 · 스프린트 플래너",
-=======
-tab1, tab2, tab_alloc, tab3 = st.tabs([
-    "📅 Module 1 · 스케줄/임계경로",
-    "🔁 Module 1 · 사이클 검출",
-    "🗺️ Module 1→2 · 전체 일정 배정",
->>>>>>> 0e670f4d13acf5e78fc45abda606f1c1b0f221b6
     "👥 Module 2 · 배정 (헝가리안 vs 그리디)",
 ])
 
@@ -549,24 +539,21 @@ with tab3:
             st.subheader("친화도 히트맵 (헝가리안 배정 강조)")
             affinity_heatmap(s_tasks, pool, h)
 
-<<<<<<< HEAD
 # ════════════════════════════════════════════════════════════════════
 #  TAB 4 — 스프린트 플래너 (0/1 배낭 DP · 백트래킹 · 그리디)
 # ════════════════════════════════════════════════════════════════════
 with tab_planner:
-    st.subheader("스프린트 플래너 — 제한된 용량 내 비즈니스 가치 극대화 (Module 3)")
-    st.caption("Module 3 에서는 각 스프린트의 용량(Capacity) 한도 내에서 "
-               "비즈니스 가치(Value)의 합을 최대화하는 태스크를 선택합니다. "
-               "DP(동적계획법), 백트래킹, 가치밀도 그리디 세 가지 알고리즘으로 최적화를 수행합니다.")
+    st.subheader("Module 3 · 스프린트에 담을 일을 고르는 플래너")
+    st.caption("스프린트 용량은 가방 크기, 태스크 estimate는 필요한 공간, value는 얻는 가치입니다. "
+               "같은 용량 안에서 더 가치 있는 조합을 찾는 과정을 보여줍니다.")
 
     mode_m3 = st.sidebar.radio("플래너 보기 모드", ["단일 스프린트 배낭 시연 (P3-S4)", "글로벌 의존성 인지 플래닝 & 배정 연동"], horizontal=False)
 
     if mode_m3 == "단일 스프린트 배낭 시연 (P3-S4)":
-        st.markdown("#### README.md 배낭 반례 검증 데모")
-        st.info("스프린트 `P3-S4` 용량은 **10**이며, 포함된 태스크 A(6,60), B(5,40), C(5,40)를 대상으로 "
-                "가치 밀도 기준 그리디와 동적계획법(DP)/백트래킹의 결과를 대조합니다.")
+        st.markdown("#### 작은 예제로 보기: 용량 10짜리 스프린트")
+        st.info("세 가지 일을 놓고 비교합니다. A는 하나만 해도 가치가 크지만 6pt를 차지하고, "
+                "B와 C는 각각 5pt라서 둘을 같이 담으면 용량 10을 정확히 채웁니다.")
 
-        # 데모 데이터 및 플래너 실행
         demo_tasks = [
             {"id": "T0151", "estimate": 6, "value": 60, "title": "Knapsack Item A (T0151)"},
             {"id": "T0152", "estimate": 5, "value": 40, "title": "Knapsack Item B (T0152)"},
@@ -586,157 +573,226 @@ with tab_planner:
         bt_sel, bt_est, bt_val = demo_planner.plan_backtracking(demo_tasks, 10)
         t3_elapsed = (dt.datetime.now() - t3_start).total_seconds() * 1000.0
 
-        # 카드 메트릭으로 요약
-        c1, c2, c3 = st.columns(3)
-        c1.metric("가치밀도 그리디", f"{g_val} pts", help=f"선택: {g_sel} (소진용량: {g_est})")
-        c2.metric("0/1 배낭 DP (최적)", f"{dp_val} pts", delta=int(dp_val - g_val), help=f"선택: {dp_sel} (소진용량: {dp_est})")
-        c3.metric("백트래킹 탐색 (최적)", f"{bt_val} pts", delta=int(bt_val - g_val), help=f"선택: {bt_sel} (소진용량: {bt_est})")
-
-        # 비교 표 시각화
-        demo_df = pd.DataFrame([
-            {"알고리즘": "Greedy", "선택된 태스크": ", ".join(g_sel), "소진 용량": g_est, "총 가치": g_val, "수행시간(ms)": round(t1_elapsed, 4)},
-            {"알고리즘": "DP (Optimal)", "선택된 태스크": ", ".join(dp_sel), "소진 용량": dp_est, "총 가치": dp_val, "수행시간(ms)": round(t2_elapsed, 4)},
-            {"알고리즘": "Backtracking (Optimal)", "선택된 태스크": ", ".join(bt_sel), "소진 용량": bt_est, "총 가치": bt_val, "수행시간(ms)": round(t3_elapsed, 4)}
+        task_intro = pd.DataFrame([
+            {
+                "태스크": t["title"].replace("Knapsack Item ", "").replace(" (", "\n("),
+                "필요 용량": t["estimate"],
+                "얻는 가치": t["value"],
+                "1pt당 가치": round(t["value"] / t["estimate"], 2),
+            }
+            for t in demo_tasks
         ])
-        st.table(demo_df)
+        st.write("##### 후보 태스크")
+        st.dataframe(task_intro, hide_index=True, width="stretch")
 
-        # 바 차트 시각화
-        bar_data = []
-        for t in demo_tasks:
-            bar_data.append({"태스크": t["title"], "estimate": t["estimate"], "value": t["value"], 
-                             "Greedy 선택": t["id"] in g_sel, "Optimal 선택": t["id"] in dp_sel})
-        bdf = pd.DataFrame(bar_data)
+        c1, c2, c3 = st.columns(3)
+        c1.metric("Greedy가 얻은 가치", f"{g_val} pts", help=f"선택: {', '.join(g_sel)} / 사용 용량: {g_est}pt")
+        c2.metric("DP가 얻은 가치", f"{dp_val} pts", delta=int(dp_val - g_val), help=f"선택: {', '.join(dp_sel)} / 사용 용량: {dp_est}pt")
+        c3.metric("Backtracking 결과", f"{bt_val} pts", delta=int(bt_val - g_val), help=f"선택: {', '.join(bt_sel)} / 사용 용량: {bt_est}pt")
 
-        st.write("##### 태스크 속성 및 선택 여부 비교")
-        b1 = alt.Chart(bdf).mark_bar().encode(
-            x=alt.X("value:Q", title="비즈니스 가치"),
-            y=alt.Y("태스크:N", title=None),
-            color=alt.condition(alt.datum["Optimal 선택"], alt.value("#2e7d32"), alt.value("#c62828"))
-        ).properties(title="Optimal(DP/백트래킹) 선택 태스크 (초록=선택, 빨강=미선택)", height=150)
-        
-        b2 = alt.Chart(bdf).mark_bar().encode(
-            x=alt.X("value:Q", title="비즈니스 가치"),
-            y=alt.Y("태스크:N", title=None),
-            color=alt.condition(alt.datum["Greedy 선택"], alt.value("#b8860b"), alt.value("#c62828"))
-        ).properties(title="Greedy 선택 태스크 (황토=선택, 빨강=미선택)", height=150)
+        demo_df = pd.DataFrame([
+            {"방법": "Greedy", "쉽게 말하면": "1pt당 가치가 높은 것부터 담기", "담은 태스크": ", ".join(g_sel), "사용 용량": g_est, "남은 용량": 10 - g_est, "얻은 가치": g_val, "시간(ms)": round(t1_elapsed, 4)},
+            {"방법": "DP", "쉽게 말하면": "가능한 조합을 표로 쌓아 최선 찾기", "담은 태스크": ", ".join(dp_sel), "사용 용량": dp_est, "남은 용량": 10 - dp_est, "얻은 가치": dp_val, "시간(ms)": round(t2_elapsed, 4)},
+            {"방법": "Backtracking", "쉽게 말하면": "담기/안 담기를 탐색하며 최선 찾기", "담은 태스크": ", ".join(bt_sel), "사용 용량": bt_est, "남은 용량": 10 - bt_est, "얻은 가치": bt_val, "시간(ms)": round(t3_elapsed, 4)}
+        ])
+        st.write("##### 결과 비교")
+        st.dataframe(demo_df, hide_index=True, width="stretch")
 
-        st.altair_chart(b1 & b2, width="stretch")
+        capacity_rows = []
+        for method, used, value in [("Greedy", g_est, g_val), ("DP", dp_est, dp_val), ("Backtracking", bt_est, bt_val)]:
+            capacity_rows.append({"방법": method, "구분": "사용한 용량", "용량": used, "얻은 가치": value})
+            capacity_rows.append({"방법": method, "구분": "남은 용량", "용량": 10 - used, "얻은 가치": value})
+        cdf = pd.DataFrame(capacity_rows)
+
+        capacity_chart = alt.Chart(cdf).mark_bar(size=34).encode(
+            x=alt.X("용량:Q", stack="zero", title="스프린트 용량 10pt"),
+            y=alt.Y("방법:N", sort=["Greedy", "DP", "Backtracking"], title=None),
+            color=alt.Color("구분:N", scale=alt.Scale(domain=["사용한 용량", "남은 용량"], range=["#4c78a8", "#d7dee8"]), legend=alt.Legend(title=None)),
+            tooltip=["방법", "구분", "용량", "얻은 가치"],
+        )
+        value_chart = alt.Chart(demo_df).mark_bar(size=34).encode(
+            x=alt.X("얻은 가치:Q", title="비즈니스 가치"),
+            y=alt.Y("방법:N", sort=["Greedy", "DP", "Backtracking"], title=None),
+            color=alt.Color("방법:N", scale=alt.Scale(domain=["Greedy", "DP", "Backtracking"], range=["#b8860b", "#2e7d32", "#2e7d32"]), legend=None),
+            tooltip=["방법", "담은 태스크", "사용 용량", "얻은 가치"],
+        )
+        st.write("##### 한눈에 읽기")
+        vc1, vc2 = st.columns(2)
+        with vc1:
+            st.altair_chart(capacity_chart.properties(height=170, title="용량을 얼마나 채웠나"), width="stretch")
+        with vc2:
+            st.altair_chart(value_chart.properties(height=170, title="그래서 가치를 얼마나 얻었나"), width="stretch")
+
+        choice_rows = []
+        for method, selected in [("Greedy", g_sel), ("DP", dp_sel), ("Backtracking", bt_sel)]:
+            for t in demo_tasks:
+                label = t["title"].split()[2]
+                choice_rows.append({
+                    "방법": method,
+                    "태스크": f"{label} ({t['estimate']}pt / {t['value']}가치)",
+                    "선택": "담음" if t["id"] in selected else "안 담음",
+                })
+        choice_chart = alt.Chart(pd.DataFrame(choice_rows)).mark_rect(stroke="white").encode(
+            x=alt.X("태스크:N", title=None),
+            y=alt.Y("방법:N", sort=["Greedy", "DP", "Backtracking"], title=None),
+            color=alt.Color("선택:N", scale=alt.Scale(domain=["담음", "안 담음"], range=["#2e7d32", "#cfd8e3"]), legend=alt.Legend(title=None)),
+            tooltip=["방법", "태스크", "선택"],
+        )
+        choice_text = alt.Chart(pd.DataFrame(choice_rows)).mark_text(fontWeight="bold").encode(
+            x=alt.X("태스크:N", title=None),
+            y=alt.Y("방법:N", sort=["Greedy", "DP", "Backtracking"], title=None),
+            text=alt.Text("선택:N"),
+            color=alt.condition(alt.datum["선택"] == "담음", alt.value("white"), alt.value("#2b3440")),
+        )
+        st.altair_chart((choice_chart + choice_text).properties(height=150, title="각 방법이 실제로 담은 태스크"), width="stretch")
+        st.success("결론: Greedy는 A 하나를 먼저 담아 60가치에서 멈추지만, DP와 Backtracking은 B+C 조합을 찾아 80가치를 얻습니다.")
 
     else:
-        st.markdown("#### 글로벌 의존성 인지 플래닝 및 Carry Forward")
-        st.caption("DAG 의존성을 만족하는 태스크들만 스프린트 후보군으로 구성하며, "
-                   "용량이 모자라 계획에 포함되지 못한 태스크들은 다음 스프린트로 이월(Carry-Forward)됩니다.")
+        st.markdown("#### 전체 프로젝트에 적용해 보기")
+        st.caption("앞선 작은 예제를 모든 스프린트에 반복 적용합니다. 단, 선행 태스크가 끝나야 다음 태스크를 후보로 넣고, "
+                   "이번 스프린트에 못 담은 일은 다음 스프린트 후보로 넘깁니다.")
 
         plan_method = st.selectbox("플래너 알고리즘 선택", ["DP", "Backtracking", "Greedy"])
         
-        # 글로벌 플래닝 실행
         m3_planner = P.SprintPlanner(tasks, sprints, projects)
         g_plan = m3_planner.plan_global(method=plan_method.lower())
+        sprint_caps = {s["id"]: int(s.get("capacity", 0)) for s in sprints}
+        sprint_projs = {s["id"]: s.get("project") for s in sprints}
 
-        # 요약 메트릭
         g1, g2, g3, g4 = st.columns(4)
-        g1.metric("총 비즈니스 가치", f"{g_plan.total_value} pts")
-        g2.metric("총 소진 용량", f"{g_plan.total_capacity_used} pts")
-        g3.metric("누적 이월(Carry-forward) 수", f"{g_plan.carried_forward_total}건")
-        g4.metric("최종 미계획 백로그", f"{len(g_plan.unplanned_tasks)}개")
+        g1.metric("선택한 일의 총 가치", f"{g_plan.total_value} pts")
+        g2.metric("사용한 총 용량", f"{g_plan.total_capacity_used} pts")
+        g3.metric("다음으로 넘긴 횟수", f"{g_plan.carried_forward_total}건")
+        g4.metric("끝까지 못 넣은 일", f"{len(g_plan.unplanned_tasks)}개")
 
-        # 비교군 설명 추가
-        st.write("##### 방식별 글로벌 플랜 성적 대조")
+        st.write("##### 알고리즘별 성적")
         full_cmp = []
         for m_name in ["greedy", "dp", "backtracking"]:
             r = m3_planner.plan_global(method=m_name)
             full_cmp.append({
                 "알고리즘": m_name.upper(),
-                "총 비즈니스 가치": r.total_value,
-                "총 소진 용량": r.total_capacity_used,
-                "누적 이월 수": r.carried_forward_total,
-                "최종 미계획 백로그": len(r.unplanned_tasks)
+                "얻은 가치": r.total_value,
+                "사용 용량": r.total_capacity_used,
+                "1pt당 가치": round(r.total_value / r.total_capacity_used, 2) if r.total_capacity_used else 0,
+                "다음으로 넘긴 횟수": r.carried_forward_total,
+                "끝까지 못 넣은 일": len(r.unplanned_tasks),
+                "현재 선택": "선택됨" if m_name == plan_method.lower() else ""
             })
-        st.dataframe(pd.DataFrame(full_cmp), hide_index=True)
+        cmp_df = pd.DataFrame(full_cmp)
+        cmp_chart = alt.Chart(cmp_df).mark_bar(size=38).encode(
+            x=alt.X("얻은 가치:Q", title="총 비즈니스 가치"),
+            y=alt.Y("알고리즘:N", sort="-x", title=None),
+            color=alt.condition(alt.datum["현재 선택"] == "선택됨", alt.value("#2e7d32"), alt.value("#7f8fa6")),
+            tooltip=["알고리즘", "얻은 가치", "사용 용량", "1pt당 가치", "다음으로 넘긴 횟수", "끝까지 못 넣은 일"],
+        )
+        st.altair_chart(cmp_chart.properties(height=170), width="stretch")
+        st.dataframe(cmp_df, hide_index=True, width="stretch")
 
         st.markdown("---")
-        st.markdown("#### 스프린트별 상세 실행 계획")
+        st.markdown("#### 스프린트별로 무엇이 일어났나")
 
-        # 스프린트별 결과 표
         sp_rows = []
         for sp_id, plan in sorted(g_plan.sprint_plans.items()):
             sp_proj = sprint_projs.get(sp_id, sp_id.split("-")[0])
+            cap = sprint_caps.get(sp_id, 0)
             sp_rows.append({
                 "스프린트": sp_id,
                 "프로젝트": sp_proj,
-                "스프린트 용량": sprint_caps.get(sp_id, 0),
-                "실제 소진": plan.used_capacity,
-                "선택된 태스크수": len(plan.selected_tasks),
-                "이월된 태스크수": len(plan.carried_tasks),
-                "가치합": plan.total_value,
-                "수행시간(ms)": round(plan.elapsed_ms, 3)
+                "용량": cap,
+                "사용": plan.used_capacity,
+                "남음": max(cap - plan.used_capacity, 0),
+                "사용률(%)": round(plan.used_capacity / cap * 100) if cap else 0,
+                "담은 일": len(plan.selected_tasks),
+                "다음으로 넘긴 일": len(plan.carried_tasks),
+                "얻은 가치": plan.total_value,
+                "시간(ms)": round(plan.elapsed_ms, 3)
             })
-        
-        st.dataframe(pd.DataFrame(sp_rows), hide_index=True, width="stretch")
+        sp_df = pd.DataFrame(sp_rows)
 
-        # 스프린트별 아코디언 상세
+        usage_chart = alt.Chart(sp_df).mark_bar(size=18).encode(
+            x=alt.X("사용률(%):Q", title="용량 사용률", scale=alt.Scale(domain=[0, 100])),
+            y=alt.Y("스프린트:N", sort=list(sp_df["스프린트"]), title=None),
+            color=alt.Color("얻은 가치:Q", scale=alt.Scale(scheme="tealblues"), legend=alt.Legend(title="가치")),
+            tooltip=["스프린트", "프로젝트", "용량", "사용", "남음", "담은 일", "다음으로 넘긴 일", "얻은 가치"],
+        )
+        count_rows = []
+        for row in sp_rows:
+            count_rows.append({"스프린트": row["스프린트"], "구분": "담은 일", "개수": row["담은 일"]})
+            count_rows.append({"스프린트": row["스프린트"], "구분": "다음으로 넘긴 일", "개수": row["다음으로 넘긴 일"]})
+        count_chart = alt.Chart(pd.DataFrame(count_rows)).mark_bar(size=18).encode(
+            x=alt.X("개수:Q", stack="zero", title="태스크 수"),
+            y=alt.Y("스프린트:N", sort=list(sp_df["스프린트"]), title=None),
+            color=alt.Color("구분:N", scale=alt.Scale(domain=["담은 일", "다음으로 넘긴 일"], range=["#2e7d32", "#d9912b"]), legend=alt.Legend(title=None)),
+            tooltip=["스프린트", "구분", "개수"],
+        )
+        sc1, sc2 = st.columns(2)
+        with sc1:
+            st.altair_chart(usage_chart.properties(height=max(220, 24 * len(sp_df)), title="각 스프린트가 용량을 얼마나 썼는지"), width="stretch")
+        with sc2:
+            st.altair_chart(count_chart.properties(height=max(220, 24 * len(sp_df)), title="담은 일과 다음으로 넘긴 일"), width="stretch")
+        st.dataframe(sp_df, hide_index=True, width="stretch")
+
         sel_sp = st.selectbox("스프린트 세부 조회", sorted(g_plan.sprint_plans.keys()))
         s_plan = g_plan.sprint_plans[sel_sp]
         
-        sa1, sa2 = st.columns(2)
-        with sa1:
-            st.markdown(f"**선택된 태스크 ({len(s_plan.selected_tasks)}개)**")
+        st.write(f"##### {sel_sp} 자세히 보기")
+        st.caption(f"이 스프린트는 {sprint_caps.get(sel_sp, 0)}pt 중 {s_plan.used_capacity}pt를 사용했고, "
+                   f"{len(s_plan.selected_tasks)}개를 담고 {len(s_plan.carried_tasks)}개를 다음 후보로 넘겼습니다.")
+        selected_tab, carried_tab = st.tabs(["이번에 담은 일", "다음으로 넘긴 일"])
+        with selected_tab:
             if s_plan.selected_tasks:
                 sel_tasks_data = [
                     {
                         "ID": tid, 
-                        "estimate": task_by_id[tid]["estimate"], 
-                        "value": task_by_id[tid]["value"], 
+                        "필요 용량": task_by_id[tid]["estimate"], 
+                        "가치": task_by_id[tid]["value"], 
+                        "1pt당 가치": round(task_by_id[tid]["value"] / task_by_id[tid]["estimate"], 2) if task_by_id[tid]["estimate"] else 0,
                         "우선순위": task_by_id[tid].get("priority", 4),
                         "제목": task_by_id[tid]["title"]
                     } for tid in s_plan.selected_tasks
                 ]
-                st.dataframe(pd.DataFrame(sel_tasks_data), hide_index=True)
+                st.dataframe(pd.DataFrame(sel_tasks_data), hide_index=True, width="stretch")
             else:
                 st.write("선택된 태스크가 없습니다.")
-        with sa2:
-            st.markdown(f"**이월(Carry forward)된 태스크 ({len(s_plan.carried_tasks)}개)**")
+        with carried_tab:
             if s_plan.carried_tasks:
                 car_tasks_data = [
                     {
                         "ID": tid, 
-                        "estimate": task_by_id[tid]["estimate"], 
-                        "value": task_by_id[tid]["value"], 
+                        "필요 용량": task_by_id[tid]["estimate"], 
+                        "가치": task_by_id[tid]["value"], 
+                        "1pt당 가치": round(task_by_id[tid]["value"] / task_by_id[tid]["estimate"], 2) if task_by_id[tid]["estimate"] else 0,
                         "우선순위": task_by_id[tid].get("priority", 4),
                         "제목": task_by_id[tid]["title"]
                     } for tid in s_plan.carried_tasks
                 ]
-                st.dataframe(pd.DataFrame(car_tasks_data), hide_index=True)
+                st.dataframe(pd.DataFrame(car_tasks_data), hide_index=True, width="stretch")
             else:
                 st.write("이월된 태스크가 없습니다.")
 
         st.markdown("---")
-        st.markdown("#### Module 3 ↔ Module 2 유기적 배정 연동 결과")
-        st.caption("스프린트 플래너가 용량 내로 가치 극대화한 **선택 태스크들만** 대상으로 Module 2 배정기를 실행합니다.")
+        st.markdown("#### 고른 일을 실제 개발자에게 배정하면")
+        st.caption("Module 3가 담기로 결정한 태스크만 Module 2 배정기에 넘겨서, 누가 맡을 수 있는지 확인합니다.")
 
-        # 스프린트 플래너에서 선택된 태스크들 필터링
         selected_global_tids = []
         for plan in g_plan.sprint_plans.values():
             selected_global_tids.extend(plan.selected_tasks)
         selected_tasks_subset = [task_by_id[tid] for tid in selected_global_tids]
 
-        # 배정기 실행
         slack_v, crit_v, sprint_ord = A.schedule_view(selected_tasks_subset, projects, sprints)
         sh_m3 = alloc.allocate_schedule(selected_tasks_subset, slack_v, crit_v, sprint_ord, method="hungarian")
         sg_m3 = alloc.allocate_schedule(selected_tasks_subset, slack_v, crit_v, sprint_ord, method="greedy")
 
         st.write(f"**배정 대상 태스크 수:** {len(selected_tasks_subset)}개 (전체 153개 중 용량 내 선별 건)")
         
-        # 배정 결과 메트릭
         m1, m2, m3 = st.columns(3)
         staffed_h_m3 = len(sh_m3.assignments) - len(sh_m3.unstaffed)
         staffed_g_m3 = len(sg_m3.assignments) - len(sg_m3.unstaffed)
-        m1.metric("총 배정 친화도 (헝가리안)", sh_m3.total_score, delta=int(sh_m3.total_score - sg_m3.total_score))
-        m2.metric("배정 완료율", f"{staffed_h_m3} / {len(selected_tasks_subset)}", delta=int(staffed_h_m3 - staffed_g_m3))
-        m3.metric("인력 미배정", len(sh_m3.unstaffed), delta=int(len(sh_m3.unstaffed) - len(sg_m3.unstaffed)), delta_color="inverse")
+        m1.metric("개발자-태스크 적합도", sh_m3.total_score, delta=int(sh_m3.total_score - sg_m3.total_score))
+        m2.metric("사람이 배정된 일", f"{staffed_h_m3} / {len(selected_tasks_subset)}", delta=int(staffed_h_m3 - staffed_g_m3))
+        m3.metric("아직 담당자 없는 일", len(sh_m3.unstaffed), delta=int(len(sh_m3.unstaffed) - len(sg_m3.unstaffed)), delta_color="inverse")
 
-        # 개발자 워크로드 시각화
-        st.write("##### 플래너 결과 연동 개발자 워크로드 분포")
+        st.write("##### 개발자별 맡은 양")
         wrows_m3 = []
         for d, ts in sh_m3.by_dev.items():
             dev = alloc.devs[d]
@@ -751,15 +807,17 @@ with tab_planner:
         
         bar_m3 = alt.Chart(wdf_m3).mark_bar().encode(
             y=alt.Y("dev:N", sort="-x", title=None),
-            x=alt.X("load:Q", title="확정 부하(load, pts)"),
-            color=alt.Color("util%:Q", scale=alt.Scale(scheme="greenblue", domain=[0, 100]), legend=alt.Legend(title="가동률%")),
+            x=alt.X("load:Q", title="맡은 작업량(pts)"),
+            color=alt.Color("util%:Q", scale=alt.Scale(scheme="greenblue", domain=[0, 100]), legend=alt.Legend(title="가동률")),
             tooltip=["dev", "level", "tasks", "load", "avail", "util%"],
         )
-        st.altair_chart(bar_m3.properties(height=max(200, 15 * len(wdf_m3))), width="stretch")
+        cap_tick_m3 = alt.Chart(wdf_m3).mark_tick(color="#c62828", thickness=2, size=18).encode(
+            y=alt.Y("dev:N", sort="-x", title=None),
+            x=alt.X("avail:Q", title="맡은 작업량(pts)"),
+            tooltip=["dev", "avail"],
+        )
+        st.altair_chart((bar_m3 + cap_tick_m3).properties(height=max(220, 16 * len(wdf_m3))), width="stretch")
+        st.caption("막대는 실제로 맡은 작업량, 빨간 눈금은 해당 개발자가 감당 가능한 용량입니다.")
 
 st.sidebar.markdown("---")
 st.sidebar.caption("Module 1: 위상정렬 · Module 2: 헝가리안 · Module 3: 배낭DP")
-=======
-st.sidebar.markdown("---")
-st.sidebar.caption("Module 1: 위상정렬+임계경로 · Module 2: 헝가리안+그리디")
->>>>>>> 0e670f4d13acf5e78fc45abda606f1c1b0f221b6

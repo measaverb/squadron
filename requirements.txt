@@ -1,4 +1,4 @@
-# Squadron — visualization app (app.py) dependencies.
+# Squadron - visualization app (app.py) dependencies.
 # NOTE: the graded algorithm modules (scheduler.py = Module 1, allocator.py = Module 2)
 #       use the Python standard library ONLY and need NONE of these.
 #       These are required solely for the Streamlit visualisation layer.
