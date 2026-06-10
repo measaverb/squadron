@@ -1,0 +1,13 @@
+scenario,algorithm,task_count,capacity,selected_count,used_capacity,total_value,avg_ms,median_ms,peak_kb
+single_knapsack_scaling,DP,5,22,2,21,156,0.02552,0.0244,1.41
+single_knapsack_scaling,Backtracking,5,22,2,21,156,0.02167,0.0212,1.21
+single_knapsack_scaling,DP,10,38,4,37,334,0.08294,0.0823,4.69
+single_knapsack_scaling,Backtracking,10,38,4,37,334,0.09481,0.08975,1.33
+single_knapsack_scaling,DP,15,52,7,48,499,0.26261,0.25415,11.22
+single_knapsack_scaling,Backtracking,15,52,7,48,499,0.16927,0.1656,1.38
+single_knapsack_scaling,DP,20,62,8,61,593,0.6805,0.55505,18.35
+single_knapsack_scaling,Backtracking,20,62,8,61,593,0.18476,0.1737,1.61
+single_knapsack_scaling,DP,25,70,12,69,881,0.84621,0.814,32.77
+single_knapsack_scaling,Backtracking,25,70,12,69,881,0.16441,0.1624,1.83
+single_knapsack_scaling,DP,30,80,16,80,1116,1.27054,1.24365,48.99
+single_knapsack_scaling,Backtracking,30,80,16,80,1116,0.13514,0.13065,2.0

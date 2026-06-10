@@ -26,6 +26,7 @@ import streamlit as st
 import scheduler as S          # Module 1 (표준 라이브러리만)
 import allocator as A          # Module 2 (표준 라이브러리만)
 import planner as P            # Module 3 (표준 라이브러리만)
+import searcher as SR          # Module 4 (표준 라이브러리만)
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(HERE, "data")
@@ -58,7 +59,7 @@ def build_scheduler(tasks, projects, sprints) -> S.Scheduler:
 
 # ──────────────────────────── 사이드바 ────────────────────────────
 st.sidebar.title("🛰️ Squadron")
-st.sidebar.caption("조직 단위 엔지니어링 리소스 매니저")
+st.sidebar.caption("조직 단위 엔지니어링 리소스 매니저·검색기")
 data_choice = st.sidebar.radio(
     "데이터셋",
     ["tasks.json (정상 DAG)", "tasks_broken.json (사이클 주입)"],
@@ -78,12 +79,13 @@ st.sidebar.metric("프로젝트", len(projects))
 
 st.title("Squadron — 프로젝트 스케줄러 · 특성기반 배정기")
 
-tab1, tab2, tab_alloc, tab_planner, tab3 = st.tabs([
+tab1, tab2, tab_alloc, tab_planner, tab3, tab4 = st.tabs([
     "📅 Module 1 · 스케줄/임계경로",
     "🔁 Module 1 · 사이클 검출",
     "🗺️ Module 1→2 · 전체 일정 배정",
     "📦 Module 3 · 스프린트 플래너",
     "👥 Module 2 · 배정 (헝가리안 vs 그리디)",
+    "🔍 Module 4 · 백로그 검색",
 ])
 
 
@@ -819,5 +821,231 @@ with tab_planner:
         st.altair_chart((bar_m3 + cap_tick_m3).properties(height=max(220, 16 * len(wdf_m3))), width="stretch")
         st.caption("막대는 실제로 맡은 작업량, 빨간 눈금은 해당 개발자가 감당 가능한 용량입니다.")
 
+
+# ════════════════════════════════════════════════════════════════════
+#  TAB 5 — Module 4 · 백로그 검색·자동완성
+#  ── KMP(정확검색) / 라빈-카프(다중키워드) / 트라이(자동완성) / 편집거리(퍼지)
+# ════════════════════════════════════════════════════════════════════
+@st.cache_resource(show_spinner=False)
+def build_searcher(tasks_key: str):
+    """BacklogSearcher 색인을 캐시한다 (태스크 데이터 변경 시 재빌드)."""
+    t = SR.load_tasks(os.path.join(DATA_DIR, tasks_key))
+    return SR.BacklogSearcher(t)
+
+searcher_inst = build_searcher(tasks_filename)
+
+with tab4:
+    st.subheader("Module 4 · 백로그 검색·자동완성")
+    st.caption(
+        f"153개 태스크를 대상으로 4가지 검색 방식을 비교합니다. "
+        f"역인덱스 단어 수: **{len(searcher_inst.inverted_index)}개**"
+    )
+
+    # ── 알고리즘 설명 expander ──
+    with st.expander("📖 알고리즘 & 자료구조 설명", expanded=False):
+        st.markdown("""
+| 구분 | 알고리즘 / 자료구조 | 역할 | 시간복잡도 |
+|---|---|---|---|
+| **자료구조 ①** | **트라이 (Trie)** | 단어를 트리에 저장, 접두어 탐색 | 삽입/탐색 O(M) |
+| **자료구조 ②** | **해시맵 (Dict)** | 역인덱스·라빈-카프 버킷·id 조회 | 평균 O(1) |
+| **자료구조 ③** | **리스트 (Array)** | KMP π 테이블 저장 | O(M) 공간 |
+| **알고리즘 ①** | **KMP** | 실패 함수로 텍스트 정확 탐색 | O(N+M) |
+| **알고리즘 ②** | **라빈-카프** | 롤링 해시로 다중 키워드 탐색 | O(N+M) avg |
+| **보조 ①** | **트라이 탐색** | 접두어 입력 → 자동완성 후보 제안 | O(M+결과수) |
+| **보조 ②** | **편집거리 DP** | Levenshtein 거리로 오타 보정 | O(M×N) |
+""")
+
+    # ── 검색 모드 선택 ──
+    search_mode = st.radio(
+        "검색 모드",
+        ["🔤 KMP — 정확 검색", "🔢 라빈-카프 — 다중 키워드",
+         "💡 트라이 — 자동완성", "🔮 편집거리 — 오타 보정"],
+        horizontal=True,
+    )
+
+    # ════════ KMP ════════
+    if search_mode.startswith("🔤"):
+        st.markdown("#### KMP — 실패 함수(π 배열) 기반 정확 부분 문자열 탐색")
+        st.info("패턴을 한 번 읽어 실패 함수(π 배열)를 만들어두면, 불일치가 나도 처음으로 돌아가지 않고 "
+                "최대한 앞으로 건너뜁니다. O(N+M) 보장.")
+        kmp_q = st.text_input("검색 패턴", value="search", key="kmp_q",
+                              placeholder="예: deploy, auth, scheduler ...")
+        if kmp_q:
+            results = searcher_inst.search_kmp(kmp_q)
+            st.metric("KMP 검색 결과", f"{len(results)}건")
+            if results:
+                df_kmp = pd.DataFrame([{
+                    "태스크ID": r.task_id,
+                    "프로젝트": r.project,
+                    "스프린트": r.sprint,
+                    "매칭 필드": r.match_field,
+                    "매칭 위치": str(r.match_positions[:5]),
+                    "제목": r.title,
+                    "태그": ", ".join(r.tags),
+                } for r in results])
+                st.dataframe(df_kmp, hide_index=True, width="stretch")
+
+                # π 배열 시각화
+                with st.expander("실패 함수(π 배열) 확인"):
+                    pi = SR.BacklogSearcher._kmp_failure(kmp_q.lower())
+                    pi_df = pd.DataFrame({
+                        "인덱스": list(range(len(kmp_q))),
+                        "문자": list(kmp_q.lower()),
+                        "π[i]": pi,
+                    })
+                    st.dataframe(pi_df, hide_index=True)
+                    st.caption("π[i] = 패턴 앞부분 중 접두사이자 접미사인 최장 문자열 길이. "
+                               "불일치 시 이 값만큼 뒤로 돌아가 재탐색합니다.")
+            else:
+                st.warning("결과가 없습니다. 다른 키워드를 입력해보세요.")
+
+    # ════════ 라빈-카프 ════════
+    elif search_mode.startswith("🔢"):
+        st.markdown("#### 라빈-카프 — 롤링 해시(Rolling Hash) 다중 키워드 탐색")
+        st.info("각 키워드의 해시값을 미리 계산하고, 텍스트를 슬라이딩 윈도우로 이동하며 해시값을 비교합니다. "
+                "해시가 일치할 때만 실제 문자 비교를 수행하여 평균 O(N+M).")
+        rk_q = st.text_input("키워드 (공백 구분)", value="API auth", key="rk_q",
+                             placeholder="예: API auth / backend scheduler / mobile export")
+        if rk_q:
+            results = searcher_inst.search_rabin_karp(rk_q)
+            keywords = [k for k in rk_q.split() if k.strip()]
+            st.metric("라빈-카프 검색 결과", f"{len(results)}건",
+                      help=f"검색 키워드: {keywords}")
+            if results:
+                df_rk = pd.DataFrame([{
+                    "태스크ID": r.task_id,
+                    "프로젝트": r.project,
+                    "스프린트": r.sprint,
+                    "매칭 키워드": r.match_field.split("keyword=")[-1].rstrip("]") if "keyword=" in r.match_field else r.match_field,
+                    "매칭 위치": str(r.match_positions[:5]),
+                    "제목": r.title,
+                    "태그": ", ".join(r.tags),
+                } for r in results])
+
+                # 키워드별 히트 수 차트
+                kw_counts = {}
+                for r in results:
+                    kw = r.match_field.split("keyword=")[-1].rstrip("]")
+                    kw_counts[kw] = kw_counts.get(kw, 0) + 1
+                if kw_counts:
+                    kw_df = pd.DataFrame(
+                        [{"키워드": k, "매칭 태스크 수": v} for k, v in kw_counts.items()])
+                    kw_chart = alt.Chart(kw_df).mark_bar(color=C_NORM).encode(
+                        x=alt.X("키워드:N", title=None),
+                        y=alt.Y("매칭 태스크 수:Q"),
+                        tooltip=["키워드", "매칭 태스크 수"],
+                    )
+                    st.altair_chart(kw_chart.properties(height=160, title="키워드별 히트 수"),
+                                    width="stretch")
+                st.dataframe(df_rk, hide_index=True, width="stretch")
+            else:
+                st.warning("결과가 없습니다. 다른 키워드를 입력해보세요.")
+
+    # ════════ 트라이 자동완성 ════════
+    elif search_mode.startswith("💡"):
+        st.markdown("#### 트라이(Trie) — 접두어 기반 자동완성")
+        st.info("모든 태스크 제목·태그의 단어를 트라이(트리)에 삽입해두고, "
+                "접두어를 루트에서 따라 내려가면 해당 접두어로 시작하는 모든 단어를 O(M+결과수)에 수집합니다.")
+        auto_q = st.text_input("접두어 입력", value="sch", key="auto_q",
+                               placeholder="예: sch / back / not / dep")
+        top_k = st.slider("최대 후보 수", 3, 20, 8)
+        if auto_q:
+            results = searcher_inst.autocomplete(auto_q, top_k)
+            st.metric("자동완성 후보", f"{len(results)}개")
+            if results:
+                auto_rows = []
+                for word, tids in results:
+                    titles = [searcher_inst.tasks_by_id[tid]["title"][:35]
+                              for tid in tids[:3] if tid in searcher_inst.tasks_by_id]
+                    auto_rows.append({
+                        "완성 단어": word,
+                        "연결 태스크 수": len(tids),
+                        "태스크 ID (최대3)": ", ".join(tids[:3]),
+                        "대표 태스크 제목": " / ".join(titles),
+                    })
+                st.dataframe(pd.DataFrame(auto_rows), hide_index=True, width="stretch")
+
+                # 후보 단어 막대차트
+                word_chart = alt.Chart(pd.DataFrame(auto_rows)).mark_bar(color="#5b7fa6").encode(
+                    x=alt.X("연결 태스크 수:Q", title="연결된 태스크 수"),
+                    y=alt.Y("완성 단어:N", sort="-x", title=None),
+                    tooltip=["완성 단어", "연결 태스크 수"],
+                )
+                st.altair_chart(word_chart.properties(height=max(160, 30 * len(auto_rows)),
+                                                       title=f"접두어 '{auto_q}'의 자동완성 후보"),
+                                width="stretch")
+            else:
+                st.warning(f"'{auto_q}'로 시작하는 단어가 색인에 없습니다. 다른 접두어를 시도해보세요.")
+
+    # ════════ 편집거리 퍼지 검색 ════════
+    else:
+        st.markdown("#### 편집거리(Levenshtein DP) — 오타 보정 퍼지 검색")
+        st.info("두 문자열 간의 **삽입·삭제·교체** 최솟값을 2D DP로 계산합니다. "
+                "임계값(threshold) 이하의 편집거리를 가진 태스크를 거리 오름차순으로 반환합니다.")
+        c1, c2 = st.columns([3, 1])
+        fuzzy_q = c1.text_input("검색어 (오타 허용)", value="dashbord", key="fuzzy_q",
+                                placeholder="예: dashbord / schedular / authentification")
+        threshold = c2.number_input("편집거리 임계값", min_value=1, max_value=5, value=2)
+        if fuzzy_q:
+            results = searcher_inst.fuzzy_search(fuzzy_q, threshold=int(threshold))
+            st.metric("퍼지 검색 결과", f"{len(results)}건",
+                      help=f"'{fuzzy_q}'와 편집거리 ≤ {threshold}인 태스크")
+            if results:
+                df_fz = pd.DataFrame([{
+                    "태스크ID": r.task_id,
+                    "프로젝트": r.project,
+                    "스프린트": r.sprint,
+                    "편집거리": r.edit_distance,
+                    "제목": r.title,
+                    "태그": ", ".join(r.tags),
+                } for r in results])
+
+                # 편집거리별 분포 차트
+                dist_counts = {}
+                for r in results:
+                    dist_counts[r.edit_distance] = dist_counts.get(r.edit_distance, 0) + 1
+                dist_df = pd.DataFrame([{"편집거리": k, "태스크 수": v}
+                                        for k, v in sorted(dist_counts.items())])
+                dist_chart = alt.Chart(dist_df).mark_bar(color=C_HUNG).encode(
+                    x=alt.X("편집거리:O", title="편집거리"),
+                    y=alt.Y("태스크 수:Q"),
+                    tooltip=["편집거리", "태스크 수"],
+                )
+                st.altair_chart(dist_chart.properties(height=150,
+                                                       title="편집거리별 결과 분포"),
+                                width="stretch")
+                st.dataframe(df_fz, hide_index=True, width="stretch")
+
+                # DP 테이블 시각화 (첫 번째 결과 기준)
+                with st.expander("DP 테이블 확인 (첫 번째 결과)"):
+                    top_title = results[0].title.lower()
+                    q_lower = fuzzy_q.lower()
+                    # DP 테이블 재계산 (시각화용)
+                    m2, n2 = len(q_lower), len(top_title[:20])
+                    t_short = top_title[:20]
+                    dp_table = [[0] * (n2 + 1) for _ in range(m2 + 1)]
+                    for i in range(m2 + 1):
+                        dp_table[i][0] = i
+                    for j in range(n2 + 1):
+                        dp_table[0][j] = j
+                    for i in range(1, m2 + 1):
+                        for j in range(1, n2 + 1):
+                            if q_lower[i-1] == t_short[j-1]:
+                                dp_table[i][j] = dp_table[i-1][j-1]
+                            else:
+                                dp_table[i][j] = 1 + min(
+                                    dp_table[i-1][j], dp_table[i][j-1], dp_table[i-1][j-1])
+                    cols = [""] + list(t_short)
+                    rows_data = {"쿼리\\후보": [""] + list(q_lower)}
+                    for j, c in enumerate(cols):
+                        rows_data[c if c else "∅"] = [dp_table[i][j] for i in range(m2 + 1)]
+                    st.dataframe(pd.DataFrame(rows_data), hide_index=True)
+                    st.caption(f"쿼리: '{q_lower}' vs 후보: '{t_short}' "
+                               f"(우하단 값={dp_table[m2][n2]} = 편집거리)")
+            else:
+                st.warning(f"임계값 {threshold} 이하의 유사 태스크가 없습니다. "
+                           "임계값을 높이거나 다른 쿼리를 입력해보세요.")
+
 st.sidebar.markdown("---")
-st.sidebar.caption("Module 1: 위상정렬 · Module 2: 헝가리안 · Module 3: 배낭DP")
+st.sidebar.caption("Module 1: 위상정렬 · Module 2: 헝가리안 · Module 3: 배낭DP · Module 4: KMP+트라이")
+

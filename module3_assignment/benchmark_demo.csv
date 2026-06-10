@@ -1,0 +1,4 @@
+scenario,algorithm,task_count,capacity,selected_tasks,used_capacity,total_value,avg_ms,median_ms,peak_kb
+P3-S4_demo,Greedy baseline,3,10,T0151,6,60,0.00588,0.00495,0.87
+P3-S4_demo,DP,3,10,T0152 T0153,10,80,0.01662,0.01385,0.84
+P3-S4_demo,Backtracking,3,10,T0152 T0153,10,80,0.01952,0.01885,1.79

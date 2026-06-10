@@ -1,0 +1,4 @@
+scenario,algorithm,task_count,sprint_count,selected_count,total_capacity_used,total_value,carried_forward_total,unplanned_tasks,avg_ms,median_ms,peak_kb
+global_sprint_planning,GREEDY,153,12,91,408,4527,213,62,6.35152,4.9698,560.03
+global_sprint_planning,DP,153,12,91,417,4506,213,62,8.40063,8.0521,99.95
+global_sprint_planning,BACKTRACKING,153,12,91,417,4506,213,62,9.10701,6.80445,81.7
