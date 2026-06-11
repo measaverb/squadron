@@ -27,6 +27,7 @@ import scheduler as S          # Module 1 (표준 라이브러리만)
 import allocator as A          # Module 2 (표준 라이브러리만)
 import planner as P            # Module 3 (표준 라이브러리만)
 import searcher as SR          # Module 4 (표준 라이브러리만)
+from searchSprint import IntegratedSprintPlanner       # Module 4 (스프린트 검색 엔진) --- IGNORE ---
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 DATA_DIR = os.path.join(HERE, "data")
@@ -50,7 +51,14 @@ def load_raw(tasks_filename: str):
     projects = S._load_json(os.path.join(DATA_DIR, "projects.json"))
     sprints = S._load_json(os.path.join(DATA_DIR, "sprints.json"))
     developers = S._load_json(os.path.join(DATA_DIR, "developers.json"))
+    
     return tasks, projects, sprints, developers
+
+@st.cache_data(show_spinner=False)
+def get_integrated_schedule_data(data_path):
+    # 4개의 데이터 대신 경로(data_path) 1개만 플래너로 보냅니다!
+    planner = IntegratedSprintPlanner(data_path)
+    return planner.get_planning_data()
 
 
 def build_scheduler(tasks, projects, sprints) -> S.Scheduler:
@@ -79,15 +87,15 @@ st.sidebar.metric("프로젝트", len(projects))
 
 st.title("Squadron — 프로젝트 스케줄러 · 특성기반 배정기")
 
-tab1, tab2, tab_alloc, tab_planner, tab3, tab4 = st.tabs([
+tab1, tab2, tab_alloc, tab_planner, tab3, tab4, tab_search = st.tabs([
     "📅 Module 1 · 스케줄/임계경로",
     "🔁 Module 1 · 사이클 검출",
     "🗺️ Module 1→2 · 전체 일정 배정",
     "📦 Module 3 · 스프린트 플래너",
     "👥 Module 2 · 배정 (헝가리안 vs 그리디)",
     "🔍 Module 4 · 백로그 검색",
+    "🔎 전체 일정 상세 검색"
 ])
-
 
 # ════════════════════════════════════════════════════════════════════
 #  TAB 1 — 스케줄 / 임계경로 / 타임라인
@@ -1045,6 +1053,84 @@ with tab4:
             else:
                 st.warning(f"임계값 {threshold} 이하의 유사 태스크가 없습니다. "
                            "임계값을 높이거나 다른 쿼리를 입력해보세요.")
+    
+# ════════════════════════════════════════════════════════════════════
+#  [NEW] TAB 7 — Module 3 · 세부 일정 검색 (담당자/스프린트)
+# ════════════════════════════════════════════════════════════════════
+with tab_search:
+    st.subheader("🔎 전체 일정 상세 검색 (담당자 / 스프린트)")
+    st.caption("Module 3(통합 플래너)가 확정한 전체 시간표를 바탕으로 누가 언제 어떤 일을 하는지 조회합니다.")
+    
+    with st.spinner("전체 일정 배정 및 시간표 생성 중..."):
+        try:
+            # 👉 [핵심 해결] 위에서 수정한 함수에 tasks, projects, sprints, developers 4개를 넘겨줍니다!
+            schedule_df = get_integrated_schedule_data(DATA_DIR)
+            
+            # 방어 코드: 에러로 인해 데이터가 완전히 비었을 경우 빈 뼈대 생성
+            if schedule_df.empty or '담당자' not in schedule_df.columns:
+                schedule_df = pd.DataFrame(columns=["프로젝트", "스프린트", "태스크ID", "제목", "담당자", "상태", "공수(pts)", "가치"])
+            
+            # 상태에 따른 색상 함수
+            def color_status(val):
+                if val == '✅ 확정': return 'color: green'
+                elif '⚠️' in val or '❌' in val: return 'color: red'
+                return ''
+
+            search_type = st.radio("검색 기준", ["👤 담당자(개발자)로 검색", "📅 스프린트로 검색"], horizontal=True)
+
+            if "담당자" in search_type:
+                # None을 제외한 개발자 목록 추출
+                dev_list = sorted([d for d in schedule_df['담당자'].unique() if d != "None"])
+                
+                if not dev_list:
+                    st.warning("현재 배정된 담당자가 없습니다.")
+                else:
+                    selected_dev = st.selectbox("🔍 검색할 담당자 선택", dev_list)
+
+                    if selected_dev:
+                        df_dev = schedule_df[schedule_df['담당자'] == selected_dev].copy()
+                        
+                        if df_dev.empty:
+                            st.warning("이 담당자에게 배정된 태스크가 없습니다.")
+                        else:
+                            df_dev = df_dev.sort_values(by=['스프린트', '태스크ID']) # type: ignore
+                            confirmed_pts = df_dev[df_dev['상태'] == '✅ 확정']['공수(pts)'].sum()
+                            
+                            st.metric("총 확정 공수", f"{confirmed_pts} pts", f"배정된 태스크 {len(df_dev)}개")
+                            
+                            try:
+                                st.dataframe(df_dev[['스프린트', '태스크ID', '공수(pts)', '상태', '제목']].style.map(color_status, subset=['상태']), hide_index=True, use_container_width=True)
+                            except AttributeError:
+                                st.dataframe(df_dev[['스프린트', '태스크ID', '공수(pts)', '상태', '제목']].style.applymap(color_status, subset=['상태']), hide_index=True, use_container_width=True)
+
+            else:
+                # 스프린트 목록 추출
+                sprint_list = sorted(schedule_df['스프린트'].unique())
+                
+                if not sprint_list:
+                    st.warning("현재 배정된 스프린트 일정이 없습니다.")
+                else:
+                    selected_sprint = st.selectbox("🔍 검색할 스프린트 선택", sprint_list)
+
+                    if selected_sprint:
+                        df_sp = schedule_df[schedule_df['스프린트'] == selected_sprint].copy()
+                        
+                        if df_sp.empty:
+                            st.warning("이 스프린트에 배정된 태스크가 없습니다.")
+                        else:
+                            df_sp = df_sp.sort_values(by=['상태', '담당자', '태스크ID'], ascending=[False, True, True]) # type: ignore
+                            confirmed_pts = df_sp[df_sp['상태'] == '✅ 확정']['공수(pts)'].sum()
+                            
+                            st.metric("스프린트 소진 공수", f"{confirmed_pts} pts", f"시도된 태스크 {len(df_sp)}개")
+                            
+                            try:
+                                st.dataframe(df_sp[['담당자', '태스크ID', '공수(pts)', '상태', '제목']].style.map(color_status, subset=['상태']), hide_index=True, use_container_width=True)
+                            except AttributeError:
+                                st.dataframe(df_sp[['담당자', '태스크ID', '공수(pts)', '상태', '제목']].style.applymap(color_status, subset=['상태']), hide_index=True, use_container_width=True)
+                            
+        except Exception as e:
+            st.error("플래너 데이터를 불러오는 중 오류가 발생했습니다.")
+            st.exception(e)
 
 st.sidebar.markdown("---")
 st.sidebar.caption("Module 1: 위상정렬 · Module 2: 헝가리안 · Module 3: 배낭DP · Module 4: KMP+트라이")
